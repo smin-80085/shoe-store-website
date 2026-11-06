@@ -167,6 +167,20 @@ footer a{color:#fff}
 .cat-title small{display:block;font-size:13px;font-weight:500;color:var(--mute)}
 .cat-switch{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;white-space:nowrap}
 .cat-switch select{min-height:44px;padding:0 34px 0 12px;border:1px solid var(--line);border-radius:6px;background:#fff;font:inherit;font-size:15px;color:var(--ink);max-width:100%}
+.cat-filters{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.cat-filters .flabel{font-size:13px;font-weight:700;color:var(--mute);margin-right:2px}
+.fchip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:2px solid var(--line);border-radius:30px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
+.fchip small{font-weight:500;color:var(--mute)}
+.fchip:hover{border-color:var(--hv)}
+.fchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.fchip[aria-pressed="true"] small{color:#ddd}
+.fchip:disabled{opacity:.4;cursor:default;border-color:var(--line)}
+.fclear{background:none;border:0;color:var(--hv);font:inherit;font-weight:700;font-size:14px;cursor:pointer;min-height:40px;padding:0 6px;text-decoration:underline}
+.cat-empty{grid-column:1/-1;text-align:center;padding:40px 16px;color:var(--mute)}
+.fpick{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bcard.feat{justify-content:center;min-height:56px;border-width:2px;border-color:var(--ink)}
+.bcard.feat .go{margin-left:10px}
+@media (max-width:760px){.fpick{gap:8px}.bcard.feat{padding:8px 6px;min-height:56px;text-align:center}.bcard.feat b{font-size:14px}.bcard.feat small{font-size:12px}.fchip{min-height:40px;padding:0 12px;font-size:13px}}
 .cat-foot{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
 .products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .prod{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
@@ -339,6 +353,7 @@ footer a{color:#fff}
           <label class="cat-switch"><span>Switch brand</span>
             <select id="catSwitch" aria-label="Switch brand"></select>
           </label>
+          <div class="cat-filters" id="catFilters" role="group" aria-label="Filter shoes"></div>
         </div>
         <div class="products" id="prodGrid"></div>
         <div class="cat-foot">
@@ -566,6 +581,15 @@ const PRODUCTS=[
 ,{brand:"Ariat",name:"WorkHog Wide Square Toe Waterproof MetGuard Composite Toe Work Boot",style:"10016265",color:"Bruin Brown",img:"img/products/ariat-10016265-side.jpg?v=2",img2:"img/products/ariat-10016265-angle.jpg?v=2",price:"$289.99",tags:["Composite Toe","Met Guard","Waterproof","EH","Pull-On","Western"]}
 ,{brand:"Ariat",name:"Groundbreaker Wide Square Toe MetGuard Steel Toe Work Boot",style:"10020063",color:"Brown",img:"img/products/ariat-10020063-side.jpg?v=2",img2:"img/products/ariat-10020063-angle.jpg?v=2",price:"$199.99",tags:["Steel Toe","Met Guard","EH","Slip Resistant","Pull-On","Western"]}
 ,{brand:"Twisted X",name:"12\" Waterproof Nano Composite Toe Western Work Boot with MetGuard",style:"MXBNWM1",color:"Hazel/Navy",img:"img/products/tx-MXBNWM1-side.jpg?v=2",img2:"img/products/tx-MXBNWM1-angle.jpg?v=2",price:"$269.99",tags:["Nano Composite Toe","Met Guard","Waterproof","EH","Slip Resistant","Pull-On","Western"]}
+,{brand:"Iron Age",name:"Groundbreaker 6\" Internal Met Guard",style:"IA5014",color:"Brown",img:"img/products/ia-IA5014-side.jpg?v=2",img2:"img/products/ia-IA5014-angle.jpg?v=2",price:"$175.99",tags:["Steel Toe","Met Guard","EH","Slip Resistant","Vibram Sole"]}
+,{brand:"Iron Age",name:"Groundbreaker 6\" External Met Guard",style:"IA5017",color:"Brown",img:"img/products/ia-IA5017-side.jpg?v=2",img2:"img/products/ia-IA5017-angle.jpg?v=2",price:"$188.99",tags:["Steel Toe","Met Guard","EH","Vibram Sole"]}
+,{brand:"Avenger",name:"Women's Foundation Met Guard Waterproof",style:"A7452",color:"Brown",img:"img/products/aveng-A7452-side.jpg?v=2",img2:"img/products/aveng-A7452-angle.jpg?v=2",price:"$159.99",tags:["Composite Toe","Met Guard","Waterproof","EH","Puncture Resistant","Metal-Free","Women's"]}
+,{brand:"Keen",name:"Louisville 6\" Waterproof Internal Met",style:"1007969",color:"Brown/Black",img:"img/products/keen-1007969-side.jpg?v=2",img2:"img/products/keen-1007969-angle.jpg?v=2",price:"$219.99",tags:["Steel Toe","Met Guard","Waterproof","EH"]}
+,{brand:"Reebok",name:"Trailgrip Work Met Guard",style:"RB3400",color:"Navy/Black",img:"img/products/rbk-RB3400-side.jpg?v=2",img2:"img/products/rbk-RB3400-angle.jpg?v=2",price:"$164.99",tags:["Alloy Toe","Met Guard","EH","Slip Resistant"]}
+,{brand:"Timberland PRO",name:"Endurance 6\" External Met Guard",style:"TB1A172T",color:"Brown",img:"img/products/tbl-TB1A172T-side.jpg?v=2",img2:"img/products/tbl-TB1A172T-angle.jpg?v=2",price:"$224.99",tags:["Steel Toe","Met Guard","Puncture Resistant","Slip Resistant"]}
+,{brand:"Thorogood",name:"Jobsite 6\" Waterproof I-MET",style:"804-4150",color:"Crazy Horse",img:"img/products/thoro-804-4150-side.jpg?v=2",img2:"img/products/thoro-804-4150-angle.jpg?v=2",price:"$169.99",tags:["Composite Toe","Met Guard","Waterproof","EH"]}
+,{brand:"Terra",name:"Sentry 2020 6\" Internal Met Guard",style:"TR0A4NRW",color:"Brown",img:"img/products/terra-TR0A4NRW-side.jpg?v=2",img2:"img/products/terra-TR0A4NRW-angle.jpg?v=2",price:"$209.99",tags:["Composite Toe","Met Guard","Waterproof","EH","Puncture Resistant"]}
+,{brand:"Terra",name:"Sentry 2020 6\" External Met Guard",style:"TR0A4NRXBRN",color:"Brown",img:"img/products/terra-TR0A4NRXBRN-side.jpg?v=2",img2:"img/products/terra-TR0A4NRXBRN-angle.jpg?v=2",price:"$209.99",tags:["Composite Toe","Met Guard","Waterproof","EH","Puncture Resistant"]}
 ];
 (function(){
  const sec=document.getElementById('in-stock'),vB=document.getElementById('catBrands'),vL=document.getElementById('catList');
@@ -581,23 +605,48 @@ const PRODUCTS=[
   brands.map(b=>{const f=PRODUCTS.find(p=>p.brand===b);return `<button type="button" class="bcard" data-go="${slug(b)}"><span class="bthumb"><img src="${f.img}" alt="" loading="lazy"></span><span><b>${esc(b)}</b><small>${n(count(b))}</small></span><span class="go">&rsaquo;</span></button>`}).join('');
  sw.innerHTML=`<option value="all">All Shoes (${PRODUCTS.length})</option>`+brands.map(b=>`<option value="${slug(b)}">${esc(b)} (${count(b)})</option>`).join('');
  const card=p=>`<article class="prod"><div class="pimg"><img src="${p.img}" alt="${esc(p.brand+' '+p.name)}" loading="lazy">${p.img2?`<img class="alt" src="${p.img2}" alt="" loading="lazy">`:''}</div><div class="pbody"><div class="pbrand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><p class="pmeta">${p.style?`Style ${esc(p.style)} · `:''}${esc(p.color)}</p>${p.price?`<p class="pprice">${esc(p.price)}</p>`:''}<div class="ptags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></article>`;
+ // feature filters (combine with AND)
+ const FILTERS=[
+  {k:'met',label:'Met Guard',test:p=>p.tags.includes('Met Guard')},
+  {k:'esd',label:'ESD',test:p=>p.tags.includes('ESD')},
+  {k:'womens',label:"Women's",test:p=>p.tags.includes("Women's")||/^Women's/.test(p.name)}
+ ];
+ const FK=Object.fromEntries(FILTERS.map(f=>[f.k,f]));
+ const fbox=document.getElementById('catFilters');
+ let cur={key:'all',f:[]};
+ const applyF=(list,fs)=>list.filter(p=>fs.every(k=>FK[k].test(p)));
+ const hashFor=(key,fs)=>key+(fs.length?'?f='+fs.join(','):'');
+ // shortcut cards on the brand screen
+ const allCard=pick.querySelector('.bcard.all');
+ allCard.insertAdjacentHTML('afterend',`<div class="fpick">${FILTERS.map(f=>`<button type="button" class="bcard feat" data-go="all?f=${f.k}"><span><b>${esc(f.label)}</b><small>${n(PRODUCTS.filter(f.test).length)}</small></span><span class="go">&rsaquo;</span></button>`).join('')}</div>`);
  function route(){
   const h=decodeURIComponent(location.hash.slice(1));
   if(!h.startsWith('in-stock/')){vL.hidden=true;vB.hidden=false;return false;}
-  const key=h.slice(9),b=key==='all'?'all':bySlug[key];
+  const [key,q]=h.slice(9).split('?'),b=key==='all'?'all':bySlug[key];
   if(!b){vL.hidden=true;vB.hidden=false;return true;}
-  const list=b==='all'?PRODUCTS:PRODUCTS.filter(p=>p.brand===b);
-  title.innerHTML=`${b==='all'?'All Shoes':esc(b)}<small>${n(list.length)} in stock</small>`;
-  pg.innerHTML=list.map(card).join('');
+  const fs=((new URLSearchParams(q||'')).get('f')||'').split(',').filter(k=>FK[k]);
+  cur={key,f:fs};
+  const base=b==='all'?PRODUCTS:PRODUCTS.filter(p=>p.brand===b);
+  const list=applyF(base,fs);
+  const fl=fs.map(k=>FK[k].label).join(' + ');
+  title.innerHTML=`${b==='all'?(fl?fl+' Shoes':'All Shoes'):esc(b)+(fl?' · '+esc(fl):'')}<small>${n(list.length)} in stock</small>`;
+  fbox.innerHTML='<span class="flabel">Filter:</span>'+FILTERS.map(f=>{const on=fs.includes(f.k);const c=applyF(base,on?fs:[...fs,f.k]).length;return `<button type="button" class="fchip" data-f="${f.k}" aria-pressed="${on}"${!on&&!c?' disabled':''}>${esc(f.label)} <small>${c}</small></button>`}).join('')+(fs.length?'<button type="button" class="fclear" data-fclear>Clear filters</button>':'');
+  pg.innerHTML=list.length?list.map(card).join(''):'<p class="cat-empty">No styles match these filters. Try removing one, or call us at 402-339-1542.</p>';
   sw.value=b==='all'?'all':key;
-  vL.querySelectorAll('[data-all]').forEach(x=>x.hidden=b==='all');
+  vL.querySelectorAll('[data-all]').forEach(x=>x.hidden=b==='all'&&!fs.length);
   vB.hidden=true;vL.hidden=false;return true;
  }
  function top(){const y=sec.getBoundingClientRect().top+window.scrollY-88;window.scrollTo({top:y,behavior:'instant'})}
  const go=k=>{location.hash=k?'in-stock/'+k:'in-stock'};
  pick.addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(c)go(c.dataset.go)});
- vL.addEventListener('click',e=>{if(e.target.closest('[data-back]'))go('');else if(e.target.closest('[data-all]'))go('all')});
- sw.addEventListener('change',()=>go(sw.value));
+ vL.addEventListener('click',e=>{
+  const fc=e.target.closest('[data-f]');
+  if(fc){const k=fc.dataset.f,fs=cur.f.includes(k)?cur.f.filter(x=>x!==k):[...cur.f,k];keepPos=true;history.replaceState(null,'','#in-stock/'+hashFor(cur.key,fs));route();return;}
+  if(e.target.closest('[data-fclear]')){keepPos=true;history.replaceState(null,'','#in-stock/'+cur.key);route();return;}
+  if(e.target.closest('[data-back]'))go('');else if(e.target.closest('[data-all]'))go('all');
+ });
+ let keepPos=false;
+ sw.addEventListener('change',()=>go(hashFor(sw.value,cur.f)));
  window.addEventListener('hashchange',()=>{if(route()||location.hash==='#in-stock')top()});
  if(route())requestAnimationFrame(top);
 })();
