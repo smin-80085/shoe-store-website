@@ -177,10 +177,10 @@ footer a{color:#fff}
 .fchip:disabled{opacity:.4;cursor:default;border-color:var(--line)}
 .fclear{background:none;border:0;color:var(--hv);font:inherit;font-weight:700;font-size:14px;cursor:pointer;min-height:40px;padding:0 6px;text-decoration:underline}
 .cat-empty{grid-column:1/-1;text-align:center;padding:40px 16px;color:var(--mute)}
-.fpick{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fpick{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .bcard.feat{justify-content:center;min-height:56px;border-width:2px;border-color:var(--ink)}
 .bcard.feat .go{margin-left:10px}
-@media (max-width:760px){.fpick{gap:8px}.bcard.feat{padding:8px 6px;min-height:56px;text-align:center}.bcard.feat b{font-size:14px}.bcard.feat small{font-size:12px}.fchip{min-height:40px;padding:0 12px;font-size:13px}}
+@media (max-width:760px){.fpick{gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}.bcard.feat{padding:8px 6px;min-height:56px;text-align:center}.bcard.feat b{font-size:14px}.bcard.feat small{font-size:12px}.fchip{min-height:40px;padding:0 12px;font-size:13px}}
 .cat-foot{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
 .products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .prod{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
@@ -606,10 +606,12 @@ const PRODUCTS=[
  sw.innerHTML=`<option value="all">All Shoes (${PRODUCTS.length})</option>`+brands.map(b=>`<option value="${slug(b)}">${esc(b)} (${count(b)})</option>`).join('');
  const card=p=>`<article class="prod"><div class="pimg"><img src="${p.img}" alt="${esc(p.brand+' '+p.name)}" loading="lazy">${p.img2?`<img class="alt" src="${p.img2}" alt="" loading="lazy">`:''}</div><div class="pbody"><div class="pbrand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><p class="pmeta">${p.style?`Style ${esc(p.style)} · `:''}${esc(p.color)}</p>${p.price?`<p class="pprice">${esc(p.price)}</p>`:''}<div class="ptags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></article>`;
  // feature filters (combine with AND)
+ const isW=p=>p.tags.includes("Women's")||/^Women's/.test(p.name);
  const FILTERS=[
+  {k:'mens',label:"Men's",test:p=>!isW(p),x:'womens'},
+  {k:'womens',label:"Women's",test:isW,x:'mens'},
   {k:'met',label:'Met Guard',test:p=>p.tags.includes('Met Guard')},
-  {k:'esd',label:'ESD',test:p=>p.tags.includes('ESD')},
-  {k:'womens',label:"Women's",test:p=>p.tags.includes("Women's")||/^Women's/.test(p.name)}
+  {k:'esd',label:'ESD',test:p=>p.tags.includes('ESD')}
  ];
  const FK=Object.fromEntries(FILTERS.map(f=>[f.k,f]));
  const fbox=document.getElementById('catFilters');
@@ -630,7 +632,7 @@ const PRODUCTS=[
   const list=applyF(base,fs);
   const fl=fs.map(k=>FK[k].label).join(' + ');
   title.innerHTML=`${b==='all'?(fl?fl+' Shoes':'All Shoes'):esc(b)+(fl?' · '+esc(fl):'')}<small>${n(list.length)} in stock</small>`;
-  fbox.innerHTML='<span class="flabel">Filter:</span>'+FILTERS.map(f=>{const on=fs.includes(f.k);const c=applyF(base,on?fs:[...fs,f.k]).length;return `<button type="button" class="fchip" data-f="${f.k}" aria-pressed="${on}"${!on&&!c?' disabled':''}>${esc(f.label)} <small>${c}</small></button>`}).join('')+(fs.length?'<button type="button" class="fclear" data-fclear>Clear filters</button>':'');
+  fbox.innerHTML='<span class="flabel">Filter:</span>'+FILTERS.map(f=>{const on=fs.includes(f.k);const c=applyF(base,on?fs:[...fs.filter(x=>x!==f.x),f.k]).length;return `<button type="button" class="fchip" data-f="${f.k}" aria-pressed="${on}"${!on&&!c?' disabled':''}>${esc(f.label)} <small>${c}</small></button>`}).join('')+(fs.length?'<button type="button" class="fclear" data-fclear>Clear filters</button>':'');
   pg.innerHTML=list.length?list.map(card).join(''):'<p class="cat-empty">No styles match these filters. Try removing one, or call us at 402-339-1542.</p>';
   sw.value=b==='all'?'all':key;
   vL.querySelectorAll('[data-all]').forEach(x=>x.hidden=b==='all'&&!fs.length);
@@ -641,7 +643,7 @@ const PRODUCTS=[
  pick.addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(c)go(c.dataset.go)});
  vL.addEventListener('click',e=>{
   const fc=e.target.closest('[data-f]');
-  if(fc){const k=fc.dataset.f,fs=cur.f.includes(k)?cur.f.filter(x=>x!==k):[...cur.f,k];keepPos=true;history.replaceState(null,'','#in-stock/'+hashFor(cur.key,fs));route();return;}
+  if(fc){const k=fc.dataset.f,fs=cur.f.includes(k)?cur.f.filter(x=>x!==k):[...cur.f.filter(x=>x!==FK[k].x),k];keepPos=true;history.replaceState(null,'','#in-stock/'+hashFor(cur.key,fs));route();return;}
   if(e.target.closest('[data-fclear]')){keepPos=true;history.replaceState(null,'','#in-stock/'+cur.key);route();return;}
   if(e.target.closest('[data-back]'))go('');else if(e.target.closest('[data-all]'))go('all');
  });
