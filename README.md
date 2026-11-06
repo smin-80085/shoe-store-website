@@ -63,3 +63,4 @@ Each brand page has its own web address, so you can share or bookmark it directl
 - `.../#in-stock/keen`, `#in-stock/thorogood`, `#in-stock/timberland-pro`, and so on: one brand
 
 The address is the brand name in lowercase, with spaces turned into dashes.
+
