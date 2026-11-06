@@ -1,84 +1,530 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work Shoes | Your Store</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haney Shoe Stores – Safety Footwear, S 108th St Omaha</title>
+<meta name="description" content="Haney Shoe Stores on S 108th Street in Omaha: safety-toe work boots and shoes from 18 brands. Steel, composite and alloy toe, EH-rated, waterproof and slip-resistant. Fitted by people who know work boots.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,700&family=Roboto+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f7f7f5;
-  color: #222;
+:root{
+  --ink:#2a2a2a; --ink-2:#363636; --steel:#3a3f46; --mute:#6b7178;
+  --paper:#f4f2ed; --card:#ffffff; --line:#dcd8cf;
+  --hv:#d92727; --hv-deep:#b51f1f; --orange:#d92727; --hv-lt:#ff6b63;
+  --radius:6px;
 }
-header {
-  background: #24372d;
-  color: white;
-  padding: 25px;
-  text-align: center;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Roboto,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.narrow{font-family:"Roboto Condensed",Roboto,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+
+/* top strip */
+.strip{background:var(--hv);color:#fff;font-weight:600;font-size:14px}
+.strip .wrap{display:flex;gap:18px;justify-content:space-between;align-items:center;padding-top:7px;padding-bottom:7px;flex-wrap:wrap}
+.strip a{text-decoration:none}
+
+/* header */
+header{background:#fff;color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.06);position:sticky;top:0;z-index:20;border-bottom:4px solid var(--hv)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:40px;height:40px;background:var(--hv);color:var(--ink);display:grid;place-items:center;font-weight:900;font-size:22px;border-radius:4px;transform:skew(-8deg)}
+.logo-img{height:54px;width:auto;display:block}
+.logo-text{border-left:2px solid #e2e2e2;padding-left:12px}
+.logo-text b{display:block;font-size:17px;font-weight:900;color:var(--hv);text-transform:uppercase;letter-spacing:.02em;line-height:1.1}
+.logo-text span{font-size:12px;color:#666;letter-spacing:.08em;text-transform:uppercase}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:4px;color:#333}
+nav a:hover{background:#f6eaea;color:var(--hv)}
+.nav-cta{background:var(--hv);color:#fff!important}
+.nav-cta:hover{background:var(--hv-deep)!important}
+.menu-btn{display:none;background:none;border:2px solid #333;color:#333;border-radius:4px;padding:6px 10px;font:inherit;font-weight:700}
+
+/* hero */
+.hero{background:linear-gradient(90deg,rgba(22,24,27,.96) 0%,rgba(22,24,27,.86) 50%,rgba(22,24,27,.7) 100%),url(img/store-floor.jpg) center/cover;color:#fff;position:relative;overflow:hidden}
+.hero-card{backdrop-filter:blur(4px);background:rgba(35,38,43,.88)!important}
+.gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.gallery figure{margin:0;position:relative;border-radius:10px;overflow:hidden;background:var(--ink)}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 16px;color:#fff;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.gallery figcaption b{display:block;color:var(--hv-lt);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:760px){.gallery{grid-template-columns:1fr}}
+.hero::before{content:"";position:absolute;inset:auto 0 0 0;height:18px;background:repeating-linear-gradient(-45deg,var(--hv) 0 22px,#fff 22px 44px)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;padding-top:70px;padding-bottom:96px;align-items:center}
+.eyebrow{display:inline-block;color:var(--hv-lt);font-weight:700;font-size:14px;margin-bottom:14px}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:.98;margin:0 0 20px;font-weight:900;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--hv-lt)}
+.hero p.lead{font-size:19px;color:#d4d6da;max-width:560px;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:var(--radius);border:2px solid transparent;font-size:16px;cursor:pointer;font-family:inherit}
+.btn-hv{background:var(--hv);color:#fff}
+.btn-hv:hover{background:var(--hv-deep)}
+.btn-ghost{border-color:#5b6068;color:#fff;background:transparent}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-card{background:var(--ink-2);border:1px solid #33373d;border-radius:10px;padding:26px}
+.hero-card h3{margin:0 0 14px;font-size:15px;color:var(--hv-lt)}
+.stat{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-top:1px solid #33373d}
+.stat:first-of-type{border-top:0}
+.stat b{font-size:36px;font-weight:900;min-width:78px}
+.stat span{color:#c9ccd1;font-size:15px}
+
+/* sections */
+section{padding:80px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,4vw,44px);margin:6px 0 0;line-height:1.05;font-weight:900;letter-spacing:-.01em}
+.sec-head p{max-width:460px;color:var(--mute);margin:0}
+.tag{color:var(--orange);font-weight:700;font-size:14px}
+
+/* protection grid */
+.prot{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.p-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative}
+.p-card .ico{width:44px;height:44px;border-radius:6px;background:var(--hv);color:#fff;display:grid;place-items:center;margin-bottom:14px}
+.p-card h3{margin:0 0 6px;font-size:18px}
+.p-card p{margin:0;color:var(--mute);font-size:15px}
+.p-card .astm{position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;color:var(--steel);background:#eceae4;padding:3px 7px;border-radius:3px}
+
+/* brands */
+.brands-sec{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:2px solid var(--hv);color:var(--hv);background:transparent;padding:7px 14px;border-radius:30px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--hv);color:#fff}
+.brands{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.brand{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;transition:transform .15s,border-color .15s}
+.brand:hover{transform:translateY(-3px);border-color:var(--hv)}
+.brand b{font-size:18px;font-weight:800;letter-spacing:.01em;line-height:1.1}
+.brand small{color:var(--mute);font-size:12px;margin-top:6px}
+.brand.hide{display:none}
+
+/* fit band */
+.fit{background:var(--ink);color:#fff}
+.fit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:16px;padding:18px 0;border-top:1px solid #33373d}
+.steps li:first-child{border-top:0}
+.steps li::before{content:counter(s,decimal-leading-zero);font-weight:900;font-size:26px;color:var(--hv-lt)}
+.steps h3{margin:0 0 4px;font-size:18px}
+.steps p{margin:0;color:#c9ccd1;font-size:15px}
+.fit h2{font-size:clamp(30px,4vw,44px);margin:6px 0 16px;line-height:1.05;font-weight:900}
+.fit .lead{color:#c9ccd1;font-size:17px}
+
+/* employers */
+.emp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.e-card{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--hv);border-radius:var(--radius);padding:26px}
+.e-card h3{margin:0 0 8px;font-size:20px}
+.e-card p{margin:0 0 12px;color:var(--mute)}
+.e-card ul{margin:0;padding-left:18px;color:var(--steel);font-size:15px}
+.e-card li{margin:4px 0}
+
+/* visit */
+.visit{background:var(--card);border-top:1px solid var(--line)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.info-block{margin-bottom:24px}
+.info-block h3{margin:0 0 6px;font-size:14px;color:var(--orange)}
+.info-block p{margin:0;font-size:18px;font-weight:600}
+.info-block a{text-decoration:none;border-bottom:2px solid var(--hv)}
+table.hours{border-collapse:collapse;width:100%;max-width:360px;font-size:16px}
+table.hours td{padding:7px 0;border-bottom:1px solid var(--line)}
+table.hours td:last-child{text-align:right;font-weight:600}
+.note{font-size:13px;color:var(--mute);margin-top:6px}
+form{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px}
+form h3{margin:0 0 4px;font-size:22px}
+form > p{margin:0 0 18px;color:var(--mute)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:12px}
+input,select,textarea{width:100%;margin-top:5px;padding:11px 12px;border:1px solid #bdb8ad;border-radius:5px;font:inherit;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--hv);border-color:var(--hv)}
+textarea{min-height:90px;resize:vertical}
+.form-ok{display:none;background:#fdeeee;border:1px solid var(--hv-deep);border-radius:6px;padding:14px;margin-top:12px;font-size:15px}
+
+footer{background:var(--ink);color:#b4b8be;padding:40px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:#fff}
+
+.stock-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.prod .pimg{background:#1b1b1b;aspect-ratio:1/1;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.prod .pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.prod .pimg img.alt{opacity:0}
+.prod:hover .pimg img.alt{opacity:1}
+.pprice{font-weight:900;font-size:18px;margin:0 0 8px}
+.prod .pbody{padding:14px 16px 16px}
+.prod .pbrand{font-size:12px;font-weight:700;color:var(--hv);text-transform:uppercase;letter-spacing:.06em}
+.prod h3{margin:3px 0 4px;font-size:17px;line-height:1.25}
+.prod .pmeta{font-size:13px;color:var(--mute);margin:0 0 10px}
+.ptags{display:flex;flex-wrap:wrap;gap:5px}
+.ptags span{font-size:11px;font-weight:700;background:#f1efea;color:var(--steel);padding:3px 7px;border-radius:3px}
+@media (max-width:960px){.products{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:960px){
+  .hero .wrap,.fit .wrap,.visit .wrap{grid-template-columns:1fr}
+  .prot{grid-template-columns:repeat(2,1fr)}
+  .brands{grid-template-columns:repeat(3,1fr)}
+  .emp{grid-template-columns:1fr}
+  nav ul{display:none;position:absolute;top:84px;left:0;right:0;background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.1);flex-direction:column;padding:10px 22px 18px;border-bottom:4px solid var(--hv)}
+  nav ul.open{display:flex}
+  .menu-btn{display:block}
 }
-nav {
-  background: white;
-  padding: 15px;
-  text-align: center;
-}
-nav a {
-  margin: 15px;
-  color: #24372d;
-  text-decoration: none;
-}
-.hero {
-  padding: 65px 20px;
-  text-align: center;
-}
-button {
-  background: #24372d;
-  color: white;
-  padding: 14px 25px;
-  border: none;
-  border-radius: 6px;
-}
-footer {
-  text-align: center;
-  padding: 30px;
+@media (max-width:560px){
+  .prot{grid-template-columns:1fr}
+  .brands{grid-template-columns:repeat(2,1fr)}
+  .row{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .strip .hide-sm{display:none}
+  .logo-img{height:44px}
+  .logo-text{display:none}
 }
 </style>
 </head>
 <body>
 
+<div class="strip">
+  <div class="wrap">
+    <span>5018 S 108th St, Omaha · <a href="tel:4023391542">(402) 339-1542</a></span>
+    <span class="hide-sm">Safety-toe specialists · 18 brands under one roof</span>
+  </div>
+</div>
+
 <header>
-<h1>YOUR STORE NAME</h1>
-<p>Work Shoes Built for Your Workday</p>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <img src="img/haney-logo.png" alt="Haney Shoes – A Fitting Place" class="logo-img">
+      <div class="logo-text"><b>Work &amp; Safety</b><span>S 108th St · Omaha</span></div>
+    </a>
+    <nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="navlist">Menu</button>
+      <ul id="navlist">
+        <li><a href="#protection">Protection</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#in-stock">In Stock</a></li>
+        <li><a href="#fitting">Fitting</a></li>
+        <li><a href="#employers">Employers</a></li>
+        <li><a href="#visit" class="nav-cta">Visit Us</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<nav>
-<a href="#">Home</a>
-<a href="#brands">Brands</a>
-<a href="#contact">Contact</a>
-</nav>
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow narrow">Omaha · S 108th Street</span>
+        <h1>Boots built for the job. <em>Fitted</em> for you.</h1>
+        <p class="lead">Our 108th Street store is all about safety footwear: steel, composite and alloy toe boots and shoes from the brands crews trust, fitted by people who know work boots.</p>
+        <div class="btns">
+          <a class="btn btn-hv" href="#visit">Get directions</a>
+          <a class="btn btn-ghost" href="#brands">See our brands</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 class="narrow">Why crews come here</h3>
+        <div class="stat"><b>18</b><span>work &amp; safety brands in stock, from Thorogood to Keen</span></div>
+        <div class="stat"><b>80+</b><span>years of Haney fitting Nebraska feet</span></div>
+        <div class="stat"><b>1</b><span>focus: footwear that passes the job-site check</span></div>
+      </div>
+    </div>
+  </div>
 
-<section class="hero">
-<h2>Find Your Next Favorite Work Shoe</h2>
-<p>Explore quality work footwear from trusted brands.</p>
-<button onclick="document.getElementById('brands').scrollIntoView()">
-Explore Shoes
-</button>
-</section>
+  <section id="protection">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="tag narrow">Shop by protection</span><h2>Tell us your site rules.<br>We'll match the boot.</h2></div>
+        <p>Not sure what your employer requires? Bring your safety policy in and we'll find footwear that meets it.</p>
+      </div>
+      <div class="prot">
+        <div class="p-card"><span class="astm">ASTM F2413</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 15c0-4 3-8 9-8s9 4 9 8v2H3z"/><path d="M3 17h18"/></svg></div><h3>Steel Toe</h3><p>The classic. Maximum impact and compression protection at a value price.</p></div>
+        <div class="p-card"><span class="astm">ASTM F2413</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 15c0-4 3-7 8-7s8 3 8 7v2H4z"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3>Composite Toe</h3><p>Non-metallic and lighter. Good for metal detectors and cold weather.</p></div>
+        <div class="p-card"><span class="astm">ASTM F2413</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 15c0-3.5 3-6 7-6s7 2.5 7 6v2H5z"/><path d="M8 9l8 8"/></svg></div><h3>Alloy Toe</h3><p>Aluminum or titanium caps. Steel-level protection with less weight and a roomier toe.</p></div>
+        <div class="p-card"><span class="astm">EH</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><h3>Electrical Hazard</h3><p>EH-rated soles for electricians, linemen and anyone working near live circuits.</p></div>
+        <div class="p-card"><span class="astm">Mt</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M5 10h14"/></svg></div><h3>Metatarsal Guard</h3><p>Internal or external met guards for heavy industry, foundries and drop hazards.</p></div>
+        <div class="p-card"><span class="astm">PR</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><path d="M3 20h18"/></svg></div><h3>Puncture Resistant</h3><p>Plated midsoles that stop nails, rebar and debris on construction sites.</p></div>
+        <div class="p-card"><span class="astm">WP</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3s6 7 6 11a6 6 0 01-12 0c0-4 6-11 6-11z"/></svg></div><h3>Waterproof &amp; Insulated</h3><p>Built for Nebraska winters, wet concrete and long outdoor shifts.</p></div>
+        <div class="p-card"><span class="astm">SR</span><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 18h18"/><path d="M6 14h3M11 14h3M16 14h3"/></svg></div><h3>Slip Resistant</h3><p>Grippy outsoles for kitchens, warehouses, healthcare and food processing.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="brands" class="hero">
-<h2>Our Brands</h2>
-<p>Keen • Thorogood • More Coming Soon</p>
-</section>
+  <section id="store" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="tag narrow">Inside the store</span><h2>Walls of work boots.<br>Room to try them on.</h2></div>
+        <p>Every brand has its own wall, so it's easy to compare styles side by side. Grab a seat and we'll bring out your size.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="img/store-floor.jpg" alt="Inside Haney Shoe Stores on S 108th St: Keen Utility wall, fitting chairs and boot displays" loading="lazy"><figcaption><b>The fitting floor</b>Keen Utility, western work boots and comfortable seating to try on</figcaption></figure>
+        <figure><img src="img/store-wall.jpg" alt="Timberland PRO and Reebok Work safety shoe displays" loading="lazy"><figcaption><b>Timberland PRO &amp; Reebok Work</b>Men's and women's safety boots and athletic safety shoes</figcaption></figure>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" class="hero">
-<h2>Visit Us</h2>
-<p>Come find your perfect fit!</p>
-</section>
+  <section id="brands" class="brands-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="tag narrow">Brands we carry</span><h2>18 brands. One stop.</h2></div>
+        <div class="filters" role="group" aria-label="Filter brands">
+          <button class="chip" data-f="all" aria-pressed="true">All</button>
+          <button class="chip" data-f="boot" aria-pressed="false">Heavy-duty boots</button>
+          <button class="chip" data-f="athletic" aria-pressed="false">Athletic safety</button>
+          <button class="chip" data-f="western" aria-pressed="false">Western</button>
+          <button class="chip" data-f="weather" aria-pressed="false">Weather &amp; rubber</button>
+        </div>
+      </div>
+      <div class="brands" id="brandGrid"></div>
+      <p class="note" style="margin-top:18px">Don't see the exact style? Ask about special orders. If one of our brands makes it, we can usually get it.</p>
+    </div>
+  </section>
+
+  <section id="in-stock">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="tag narrow">On our shelves</span><h2>In stock at 108th St.</h2></div>
+        <p>These are the styles we keep on hand. Call ahead to check your size, or ask us to special order anything else.</p>
+      </div>
+      <div class="stock-tabs" id="stockTabs" role="group" aria-label="Filter by brand"></div>
+      <div class="products" id="prodGrid"></div>
+    </div>
+  </section>
+
+  <section id="fitting" class="fit">
+    <div class="wrap">
+      <div>
+        <span class="tag narrow" style="color:var(--hv-lt)">The Haney fitting</span>
+        <h2>A boot that fits right makes a 12-hour shift shorter.</h2>
+        <p class="lead">A safety toe that's too short or too narrow is miserable by lunch. We measure both feet, ask about your job, and have you walk in the boot before you buy.</p>
+        <div class="btns" style="margin-top:22px"><a class="btn btn-hv" href="#visit">Come in for a fitting</a></div>
+      </div>
+      <ol class="steps">
+        <li><div><h3>Measure</h3><p>Length, width and arch on both feet. Most people are wearing the wrong size.</p></div></li>
+        <li><div><h3>Match the job</h3><p>Your site requirements, surfaces, hours on your feet and weather.</p></div></li>
+        <li><div><h3>Try &amp; walk</h3><p>Compare toe caps and lasts across brands until one feels right.</p></div></li>
+        <li><div><h3>Finish it off</h3><p>Insoles, work socks and laces to get the most out of your boots.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="employers">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="tag narrow">For employers &amp; safety managers</span><h2>Outfit the whole crew.</h2></div>
+        <p>From a five-person crew to a full plant, we make it easy to get compliant footwear on every worker.</p>
+      </div>
+      <div class="emp">
+        <div class="e-card">
+          <h3>Company Accounts</h3>
+          <p>Set your allowance and approved styles once. Your people come in and we handle the rest.</p>
+          <ul><li>Voucher or allowance programs</li><li>Billing straight to your company</li><li>Fitted to each employee</li></ul>
+          <p class="note" style="margin-top:12px">To set up or ask about a voucher program, please contact our main Haney store at 6060 Maple St, Omaha.</p>
+        </div>
+        <div class="e-card">
+          <h3>Mobile Shoe Truck</h3>
+          <p>Haney's mobile shoe store comes to your job site, so crews can get fitted without leaving the shift.</p>
+          <ul><li>Brands and styles for your industry</li><li>Scheduled site visits</li><li>Great for new-hire onboarding</li></ul>
+        </div>
+        <div class="e-card">
+          <h3>Special Orders</h3>
+          <p>Need a specific spec, size or color across a team? We'll order it and let you know when it's in.</p>
+          <ul><li>Wide and hard-to-find sizes</li><li>Matching styles for uniforms</li><li>Bulk orders</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="visit">
+    <div class="wrap">
+      <div>
+        <span class="tag narrow">Visit the store</span>
+        <h2 style="font-size:clamp(30px,4vw,44px);margin:6px 0 28px;line-height:1.05;font-weight:900">Stop in on your way to the site.</h2>
+        <div class="info-block"><h3 class="narrow">Address</h3><p>5018 S 108th Street<br>Omaha, NE 68137</p>
+          <p class="note"><a href="https://www.google.com/maps/search/?api=1&query=5018+S+108th+St+Omaha+NE+68137">Open in Google Maps →</a></p></div>
+        <div class="info-block"><h3 class="narrow">Phone</h3><p><a href="tel:4023391542">(402) 339-1542</a></p></div>
+        <div class="info-block"><h3 class="narrow">Hours</h3>
+          <table class="hours">
+            <tr><td>Monday – Friday</td><td>9:00 am – 6:00 pm</td></tr>
+            <tr><td>Saturday</td><td>9:00 am – 5:00 pm</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+      </div>
+      <form id="cb" novalidate>
+        <h3>Request a call back</h3>
+        <p>Looking for a specific boot, or setting up a company account? Leave your info and we'll call you.</p>
+        <div class="row">
+          <label>Name<input name="name" required autocomplete="name"></label>
+          <label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
+        </div>
+        <div class="row">
+          <label>I'm asking about
+            <select name="topic"><option>A specific boot or size</option><option>Company account</option><option>Mobile shoe truck visit</option><option>Special order</option><option>Something else</option></select>
+          </label>
+          <label>Company (optional)<input name="company" autocomplete="organization"></label>
+        </div>
+        <label>Details<textarea name="msg" placeholder="Size, protection needed, brand you like…"></textarea></label>
+        <button class="btn btn-hv" type="submit" style="width:100%">Send request</button>
+        <div class="form-ok" id="ok" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
 
 <footer>
-<p>© Your Store Name</p>
+  <div class="wrap">
+    <div><b style="color:#fff">Haney Shoe Stores · S 108th St</b><br>Safety footwear specialists · A Fitting Place</div>
+    <div>Shopping for everyday shoes or Carhartt apparel? See all Haney locations at <a href="https://www.haneyshoestore.com/">haneyshoestore.com</a></div>
+  </div>
 </footer>
 
+<script>
+const PRODUCTS=[
+ {brand:"Keen",name:"Flint II Mid Waterproof",style:"1023237",color:"Cascade Brown / Orion Blue",img:"img/products/keen-1023237-side.jpg?v=2",img2:"img/products/keen-1023237-front.jpg?v=2",price:"$179.99",tags:["Steel Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Keen",name:"San Jose 6\" Waterproof",style:"1022106",color:"Cascade Brown / Black",img:"img/products/keen-1022106-side.jpg?v=2",img2:"img/products/keen-1022106-angle.jpg?v=2",price:"$189.99",tags:["Aluminum Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Lansing Low",style:"1023205",color:"Cascade Brown / Fired Brick",img:"img/products/keen-1023205-side.jpg?v=2",img2:"img/products/keen-1023205-angle.jpg?v=2",price:"$149.99",tags:["Steel Toe","EH","Slip Resistant","Low Cut"]},
+ {brand:"Keen",name:"Lansing Mid Waterproof",style:"1018079",color:"Raven / Tawny Olive",img:"img/products/keen-1018079-side.jpg?v=2",img2:"img/products/keen-1018079-angle.jpg?v=2",price:"$164.99",tags:["Steel Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Evanston 6\" Waterproof",style:"1029149",color:"Bison / Black",img:"img/products/keen-1029149-side.jpg?v=2",img2:"img/products/keen-1029149-angle.jpg?v=2",price:"$159.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Pittsburgh Energy 6\" Waterproof",style:"1026892",color:"Cascade Brown / Greener Pastures",img:"img/products/keen-1026892-side.jpg?v=2",img2:"img/products/keen-1026892-angle.jpg?v=2",price:"$209.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Cincinnati 6\" Waterproof",style:"1026885",color:"Dark Chocolate / Sandshell",img:"img/products/keen-1026885-side.jpg?v=2",img2:"img/products/keen-1026885-angle.jpg?v=2",price:"$209.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant","Wedge"]},
+ {brand:"Keen",name:"Vista Energy ESD",style:"1024604",color:"Vapor / Black",img:"img/products/keen-1024604-side.jpg?v=2",img2:"img/products/keen-1024604-angle.jpg?v=2",price:"$139.99",tags:["Carbon Fiber Toe","ESD","Slip Resistant","Metal-Free"]},
+ {brand:"Keen",name:"Speedworks",style:"1030756",color:"Magnet / Black",img:"img/products/keen-1030756-side.jpg?v=2",img2:"img/products/keen-1030756-angle.jpg?v=2",price:"$149.99",tags:["Carbon Fiber Toe","EH","Slip Resistant","Heat Resistant"]},
+ {brand:"Keen",name:"Vista Energy XT",style:"1029698",color:"Black / Raven",img:"img/products/keen-1029698-side.jpg?v=2",img2:"img/products/keen-1029698-angle.jpg?v=2",price:"$144.99",tags:["Carbon Fiber Toe","EH","Slip Resistant","Metal-Free"]},
+ {brand:"Keen",name:"Sparta 2",style:"1025564",color:"Steel Grey / Black",img:"img/products/keen-1025564-side.jpg?v=2",img2:"img/products/keen-1025564-angle.jpg?v=2",price:"$124.99",tags:["Aluminum Toe","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Dover 6\" Waterproof",style:"1021467",color:"Dark Earth / Black",img:"img/products/keen-1021467-side.jpg?v=2",img2:"img/products/keen-1021467-angle.jpg?v=2",price:"$224.99",tags:["Carbon Fiber Toe","Waterproof","EH","American Built"]},
+ {brand:"Keen",name:"Dover 8\" Waterproof 600G",style:"1024222",color:"Dark Earth / Black",img:"img/products/keen-1024222-side.jpg?v=2",img2:"img/products/keen-1024222-angle.jpg?v=2",price:"$244.99",tags:["Carbon Fiber Toe","Waterproof","Insulated 600g","EH","American Built"]},
+ {brand:"Keen",name:"Vista Energy+ Shift ESD Slip-On",style:"1026704",color:"Coffee Bean / Black",img:"img/products/keen-1026704-side.jpg?v=2",img2:"img/products/keen-1026704-angle.jpg?v=2",price:"$154.99",tags:["Carbon Fiber Toe","ESD","Slip-On","Metal-Free"]},
+ {brand:"Keen",name:"Kenton",style:"1029118",color:"Brindle / Gum",img:"img/products/keen-1029118-side.jpg?v=2",img2:"img/products/keen-1029118-angle.jpg?v=2",price:"$129.99",tags:["Carbon Fiber Toe","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Red Hook Mid Waterproof",style:"1024576",color:"Tobacco / Black",img:"img/products/keen-1024576-side.jpg?v=2",img2:"img/products/keen-1024576-angle.jpg?v=2",price:"$194.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Keen",name:"Gibson Mid Waterproof",style:"1032513",color:"Belgian / Gum",img:"img/products/keen-1032513-side.jpg?v=2",img2:"img/products/keen-1032513-angle.jpg?v=2",price:"$174.99",tags:["Carbon Fiber Toe","Waterproof","EH","Heat Resistant"]},
+ {brand:"Keen",name:"Synchro Mid Waterproof",style:"1030305",color:"Magnet / Black",img:"img/products/keen-1030305-side.jpg?v=2",img2:"img/products/keen-1030305-angle.jpg?v=2",price:"$189.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Thorogood",name:"American Heritage 11\" Wellington (SOFT TOE)",style:"814-4208",color:"Tobacco",img:"img/products/thoro-814-4208-side.jpg?v=2",img2:"img/products/thoro-814-4208-angle.jpg?v=2",price:"$273.99",tags:["Soft Toe","Pull-On","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 8\" Moc Toe (SOFT TOE)",style:"814-4178",color:"Trail Crazyhorse",img:"img/products/thoro-814-4178-side.jpg?v=2",img2:"img/products/thoro-814-4178-angle.jpg?v=2",price:"$274.99",tags:["Soft Toe","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (SOFT TOE)",style:"814-4375",color:"Trail Crazyhorse",img:"img/products/thoro-814-4375-side.jpg?v=2",img2:"img/products/thoro-814-4375-angle.jpg?v=2",price:"$279.99",tags:["Soft Toe","Lug Sole","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (White Sole) (SOFT TOE)",style:"814-4200",color:"Tobacco",img:"img/products/thoro-814-4200-side.jpg?v=2",img2:"img/products/thoro-814-4200-angle.jpg?v=2",price:"$279.99",tags:["Soft Toe","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (Black Sole) (SOFT TOE)",style:"814-4188",color:"Tobacco / Black Sole",img:"img/products/thoro-814-4188-side.jpg?v=2",img2:"img/products/thoro-814-4188-angle.jpg?v=2",price:"$279.99",tags:["Soft Toe","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"1892 Briar Pitstop 6\" Waterproof",style:"804-3600",color:"Briar Pitstop",img:"img/products/thoro-804-3600-side.jpg?v=2",img2:"img/products/thoro-804-3600-angle.jpg?v=2",price:"$299.99",tags:["Steel Toe","Waterproof","EH","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (Wedge)",style:"804-6120",color:"Black Walnut",img:"img/products/thoro-804-6120-side.jpg?v=2",img2:"img/products/thoro-804-6120-angle.jpg?v=2",price:"$299.99",tags:["Nano Composite Toe","EH","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (Lug)",style:"804-6110",color:"Black Walnut",img:"img/products/thoro-804-6110-side.jpg?v=2",img2:"img/products/thoro-804-6110-angle.jpg?v=2",price:"$299.99",tags:["Nano Composite Toe","EH","Lug Sole","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe",style:"804-4375",color:"Trail Crazyhorse",img:"img/products/thoro-804-4375-side.jpg?v=2",img2:"img/products/thoro-804-4375-angle.jpg?v=2",price:"$289.99",tags:["Steel Toe","EH","Lug Sole","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (White Sole)",style:"804-4200",color:"Tobacco",img:"img/products/thoro-804-4200-side.jpg?v=2",img2:"img/products/thoro-804-4200-angle.jpg?v=2",price:"$289.99",tags:["Steel Toe","EH","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 6\" Moc Toe (Black Lug)",style:"804-4189",color:"Tobacco",img:"img/products/thoro-804-4189-side.jpg?v=2",img2:"img/products/thoro-804-4189-angle.jpg?v=2",price:"$289.99",tags:["Steel Toe","EH","Lug Sole","Made in USA"]},
+ {brand:"Thorogood",name:"Jobsite 8\" Waterproof Insulated",style:"804-4244",color:"Crazy Horse",img:"img/products/thoro-804-4244-side.jpg?v=2",img2:"img/products/thoro-804-4244-angle.jpg?v=2",price:"$177.99",tags:["Composite Toe","Waterproof","Insulated 400g","EH"]},
+ {brand:"Thorogood",name:"American Heritage 8\" Moc Toe",style:"804-4478",color:"Trail Crazyhorse",img:"img/products/thoro-804-4478-side.jpg?v=2",img2:"img/products/thoro-804-4478-angle.jpg?v=2",price:"$299.99",tags:["Steel Toe","EH","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 8\" Moc Toe (Black Sole)",style:"804-4288",color:"Tobacco",img:"img/products/thoro-804-4288-side.jpg?v=2",img2:"img/products/thoro-804-4288-angle.jpg?v=2",price:"$299.99",tags:["Steel Toe","EH","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 8\" Plain Toe",style:"804-4364",color:"Tobacco",img:"img/products/thoro-804-4364-side.jpg?v=2",img2:"img/products/thoro-804-4364-angle.jpg?v=2",price:"$309.99",tags:["Steel Toe","EH","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"American Heritage 11\" Wellington",style:"804-4205",color:"Trail Crazyhorse",img:"img/products/thoro-804-4205-side.jpg?v=2",img2:"img/products/thoro-804-4205-angle.jpg?v=2",price:"$299.99",tags:["Steel Toe","EH","Pull-On","Wedge","Made in USA"]},
+ {brand:"Thorogood",name:"Buffalo Ridge 11\" Waterproof",style:"804-4342",color:"Brown / Sage",img:"img/products/thoro-804-4342-side.jpg?v=2",img2:"img/products/thoro-804-4342-angle.jpg?v=2",price:"$169.99",tags:["Nano Composite Toe","Waterproof","EH","Square Toe","Pull-On"]},
+ {brand:"Brunt",name:"The Marin Waterproof (SOFT TOE)",style:"BRF10000",color:"Brown",img:"img/products/brunt-BRF10000-side.jpg?v=2",img2:"img/products/brunt-BRF10000-angle.jpg?v=2",price:"$154.99",tags:["Soft Toe","Waterproof","EH","Wedge"]},
+ {brand:"Brunt",name:"The Marin Waterproof",style:"BRF10001",color:"Brown",img:"img/products/brunt-BRF10001-side.jpg?v=2",img2:"img/products/brunt-BRF10001-angle.jpg?v=2",price:"$164.99",tags:["Composite Toe","Waterproof","EH","Wedge"]},
+ {brand:"Brunt",name:"The Marin Waterproof",style:"BRF10001",color:"Black",img:"img/products/brunt-BRF10001-BLK-side.jpg?v=2",img2:"img/products/brunt-BRF10001-BLK-angle.jpg?v=2",price:"$164.99",tags:["Composite Toe","Waterproof","EH","Wedge"]},
+ {brand:"Brunt",name:"The Marin 8\" Waterproof",style:"BRF10006",color:"Brown",img:"img/products/brunt-BRF10006-side.jpg?v=2",img2:"img/products/brunt-BRF10006-angle.jpg?v=2",price:"$194.99",tags:["Composite Toe","Waterproof","EH","Wedge"]},
+ {brand:"Brunt",name:"The Marin BRUNT Toe Waterproof",style:"BRF10004",color:"Brown",img:"img/products/brunt-BRF10004-side.jpg?v=2",img2:"img/products/brunt-BRF10004-angle.jpg?v=2",price:"$184.99",tags:["Composite Toe","Waterproof","EH","Toe & Heel Guards"]},
+ {brand:"Brunt",name:"The Ohman (SOFT TOE)",style:"BRF2000",color:"Brown",img:"img/products/brunt-BRF2000-side.jpg?v=2",img2:"img/products/brunt-BRF2000-angle.jpg?v=2",price:"$144.99",tags:["Soft Toe","Water Resistant","EH","Pull-On"]},
+ {brand:"Brunt",name:"The Ohman",style:"BRF20004",color:"Brown",img:"img/products/brunt-BRF20004-side.jpg?v=2",img2:"img/products/brunt-BRF20004-angle.jpg?v=2",price:"$154.99",tags:["Composite Toe","EH","Pull-On"]},
+ {brand:"Brunt",name:"The Bolduc Waterproof",style:"BRF20002",color:"Brown",img:"img/products/brunt-BRF20002-side.jpg?v=2",img2:"img/products/brunt-BRF20002-angle.jpg?v=2",price:"$174.99",tags:["Composite Toe","Waterproof","EH","Pull-On"]},
+ {brand:"Brunt",name:"The Bolduc BRUNT Toe Waterproof",style:"BRF20003",color:"Brown",img:"img/products/brunt-BRF20003-side.jpg?v=2",img2:"img/products/brunt-BRF20003-angle.jpg?v=2",price:"$194.99",tags:["Composite Toe","Waterproof","EH","Pull-On","Toe & Heel Guards"]},
+ {brand:"Wolverine",name:"Carlsbad Cap-Toe 6\" Work Boot",style:"W241079",color:"Brown",img:"img/products/wolv-W241079-side.jpg?v=2",img2:"img/products/wolv-W241079-angle.jpg?v=2",price:"$119.99",tags:["Steel Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Wolverine",name:"Rancher Pro HyperRest Pull-On Work Wellington",style:"W251016",color:"Titanium",img:"img/products/wolv-rancherpro-side.jpg?v=2",img2:"img/products/wolv-rancherpro-angle.jpg?v=2",price:"$194.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Pull-On"]},
+ {brand:"Iron Age",name:"Outlaw 10\" Square Toe Western Work Boot",style:"IA5040",color:"Brown / Dark Brown",img:"img/products/ia-IA5040-side.jpg?v=2",img2:"img/products/ia-IA5040-angle.jpg?v=2",price:"$133.99",tags:["Steel Toe","EH","Slip Resistant","Square Toe","Pull-On"]},
+ {brand:"Iron Age",name:"Outlaw 10\" Square Toe Waterproof Western Work Boot",style:"IA5041",color:"Brown / Taupe",img:"img/products/ia-IA5041-side.jpg?v=2",img2:"img/products/ia-IA5041-angle.jpg?v=2",price:"$142.99",tags:["Steel Toe","Waterproof","EH","Slip Resistant","Square Toe","Pull-On"]},
+ {brand:"Iron Age",name:"Solidifier 6\" Waterproof Moc Toe Work Boot",style:"IA5062",color:"Brown",img:"img/products/ia-IA5062-side.jpg?v=2",img2:"img/products/ia-IA5062-angle.jpg?v=2",price:"$173.99",tags:["Composite Toe","Waterproof","EH","Wedge"]},
+ {brand:"Iron Age",name:"Reinforcer 6\" Wedge Work Boot",style:"IA5061",color:"Brown",img:"img/products/ia-IA5061-side.jpg?v=2",img2:"img/products/ia-IA5061-angle.jpg?v=2",price:"$164.99",tags:["Steel Toe","EH","Wedge"]},
+ {brand:"Iron Age",name:"Reinforcer 8\" Wedge Work Boot",style:"IA5081",color:"Brown",img:"img/products/ia-IA5081-side.jpg?v=2",img2:"img/products/ia-IA5081-angle.jpg?v=2",price:"$168.99",tags:["Steel Toe","EH","Wedge"]},
+ {brand:"Carhartt",name:"Force HD 6\" Waterproof Work Boot",style:"FX6303",color:"Brown",img:"img/products/carh-FX6303-side.jpg?v=2",img2:"img/products/carh-FX6303-angle.jpg?v=2",price:"$159.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"Carhartt",name:"Millbrook 6\" Waterproof Wedge Boot",style:"FM6423",color:"Dark Brown",img:"img/products/carh-FM6423-side.jpg?v=2",img2:"img/products/carh-FM6423-angle.jpg?v=2",price:"$179.99",tags:["Nano Composite Toe","Waterproof","EH","Slip Resistant","Wedge"]},
+ {brand:"Rocky",name:"Grindstone XTR BOA Work Boot",style:"RKK0521",color:"Brown",img:"img/products/rocky-RKK0521-side.jpg?v=2",img2:"img/products/rocky-RKK0521-angle.jpg?v=2",price:"$189.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","BOA Laces"]},
+ {brand:"Rocky",name:"Grindstone XTR 8\" Work Boot",style:"RKK0519",color:"Brown",img:"img/products/rocky-RKK0519-side.jpg?v=2",img2:"img/products/rocky-RKK0519-angle.jpg?v=2",price:"$174.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant"]},
+ {brand:"DC",name:"Court Graffik Work",style:"DC60103",color:"Black / Grey",img:"img/products/dc-DC60103-side.jpg?v=2",price:"$146.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free"]},
+ {brand:"DC",name:"Pure Work High-Top",style:"DC60205",color:"Black / Grey / Blue",img:"img/products/dc-DC60205-side.jpg?v=2",price:"$151.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free"]},
+ {brand:"Volcom",name:"Chill Slip-On",style:"VM30809",color:"Grey",img:"img/products/volc-VM30801-side.jpg?v=2",price:"$126.99",tags:["Composite Toe","ESD","Slip Resistant","Slip-On","Metal-Free"]},
+ {brand:"Reebok",name:"The Blast Work",style:"RB9403",color:"Black / White / Blue",img:"img/products/rbk-RB9403-side.jpg?v=2",price:"$162.99",tags:["Composite Toe","EH","Slip Resistant","High-Top"]},
+ {brand:"Reebok",name:"Sublite Cushion Work",style:"RB4047",color:"Black",img:"img/products/rbk-RB4047-side.jpg?v=2",price:"$157.99",tags:["Alloy Toe","Slip Resistant"]},
+ {brand:"Reebok",name:"Nano X1 Work",style:"RB3481",color:"Grey",img:"img/products/rbk-RB3481-side.jpg?v=2",price:"$166.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free"]},
+ {brand:"Reebok",name:"Nanoflex TR Work",style:"RB3315",color:"Black",img:"img/products/rbk-RB3315-side.jpg?v=2",price:"$140.99",tags:["Composite Toe","Slip Resistant","Metal-Free"]},
+ {brand:"Reebok",name:"Trailgrip Work",style:"RB3402",color:"Grey / Black",img:"img/products/rbk-RB3402-side.jpg?v=2",price:"$154.99",tags:["Alloy Toe","Slip Resistant"]},
+ {brand:"Reebok",name:"Fusion Flexweave Work",style:"RB4311",color:"Black / White",img:"img/products/rbk-RB4311-side.jpg?v=2",price:"$172.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free"]},
+ {brand:"Reebok",name:"FloatZig 2 Work",style:"RB304",color:"Black / Orange",img:"img/products/rbk-RB304-side.jpg?v=2",price:"$161.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free"]},
+ {brand:"Reebok",name:"Women's FloatZig 2 Work",style:"RB133",color:"Dark Grey / Blue",img:"img/products/rbk-RB133-side.jpg?v=2",price:"$161.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Reebok",name:"Women's Sublite Cushion Work",style:"RB045",color:"Grey / Blue",img:"img/products/rbk-RB045-side.jpg?v=2",price:"$157.99",tags:["Alloy Toe","ESD","Slip Resistant","Women's"]},
+ {brand:"Reebok",name:"Women's Sublite Cushion Work",style:"RB492",color:"Black / Purple",img:"img/products/rbk-RB492-side.jpg?v=2",price:"$153.99",tags:["Composite Toe","ESD","Slip Resistant","Women's"]},
+ {brand:"Reebok",name:"Women's Nanoflex TR Work",style:"RB365",color:"Black / Mint",img:"img/products/rbk-RB365-side.jpg?v=2",price:"$129.99",tags:["Composite Toe","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Reebok",name:"Women's Nanoflex TR Work",style:"RB366",color:"Black / Tan",img:"img/products/rbk-RB366-side.jpg?v=2",price:"$149.99",tags:["Composite Toe","ESD","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Reebok",name:"Women's Fusion Flexweave Work",style:"RB315",color:"Black / Purple",img:"img/products/rbk-RB315-side.jpg?v=2",price:"$151.99",tags:["Composite Toe","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Reebok",name:"Women's Nano X1 Work",style:"RB382",color:"Blue / Pink",img:"img/products/rbk-RB382-side.jpg?v=2",price:"$158.99",tags:["Composite Toe","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Timberland PRO",name:"Women's Reaxion Work Shoe",style:"TB1A2174001",color:"Black / Purple",img:"img/products/tbl-A2174-side.jpg?v=2",price:"$144.99",tags:["Composite Toe","Slip Resistant","Women's"]},
+ {brand:"Timberland PRO",name:"Women's Powertrain Sport",style:"TB1A1B7F001",color:"Black",img:"img/products/tbl-A1B7F-side.jpg?v=2",price:"$139.99",tags:["Alloy Toe","ESD","Slip Resistant","Women's"]},
+ {brand:"Timberland PRO",name:"Women's Powertrain Sport",style:"TB1A1H1S001",color:"Black / Purple",img:"img/products/tbl-A1H1S-side.jpg?v=2",price:"$139.99",tags:["Alloy Toe","ESD","Slip Resistant","Women's"]},
+ {brand:"Keen",name:"Women's Sparta 2",style:"1025571",color:"Black",img:"img/products/keen-1025571-side.jpg?v=2",price:"$124.99",tags:["Aluminum Toe","EH","Slip Resistant","Women's"]},
+ {brand:"Keen",name:"Women's Vista Energy ESD",style:"1024594",color:"Black / Blue",img:"img/products/keen-1024594-side.jpg?v=2",price:"$134.99",tags:["Carbon Fiber Toe","ESD","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Keen",name:"Women's Vista Energy XT",style:"1029699",color:"Black",img:"img/products/keen-1029699-side.jpg?v=2",price:"$144.99",tags:["Carbon Fiber Toe","EH","Slip Resistant","Metal-Free","Women's"]},
+ {brand:"Keen",name:"Women's KS86",style:"1032245",color:"Black / Grey",img:"img/products/keen-1032245-side.jpg?v=2",price:"$144.99",tags:["Carbon Fiber Toe","Slip Resistant","Women's"]},
+ {brand:"Volcom",name:"Women's Chill Slip-On",style:"VM30809F",color:"Grey",img:"img/products/volc-VM30809F-side.jpg?v=2",price:"$135.99",tags:["Composite Toe","ESD","Slip Resistant","Slip-On","Metal-Free","Women's"]}
+,{brand:"Carhartt",name:"Women's Millbrook 6\" Waterproof Wedge Boot",style:"FM6444W",color:"Brown",img:"img/products/carh-FM6444W-side.jpg?v=2",img2:"img/products/carh-FM6444W-angle.jpg?v=2",price:"$174.99",tags:["Nano Composite Toe","Waterproof","Slip Resistant","Wedge","Women's"]}
+,{brand:"Rocky",name:"Women's Grindstone XTR BOA Work Boot",style:"RKK0523",color:"Brown",img:"img/products/rocky-RKK0523-side.jpg?v=2",img2:"img/products/rocky-RKK0523-angle.jpg?v=2",price:"$179.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","BOA Laces","Women's"]}
+,{brand:"Rocky",name:"Women's Grindstone XTR Pull-On Work Boot",style:"RKK0524",color:"Brown",img:"img/products/rocky-RKK0524-side.jpg?v=2",img2:"img/products/rocky-RKK0524-angle.jpg?v=2",price:"$169.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Pull-On","Women's"]}
+,{brand:"Timberland PRO",name:"Women's Titan EV 6\" Waterproof",style:"TB1A5P1A",color:"Brown",img:"img/products/tbl-A5P1A-side.jpg?v=2",img2:"img/products/tbl-A5P1A-angle.jpg?v=2",price:"$169.99",tags:["Composite Toe","Waterproof","Women's"]}
+,{brand:"Timberland PRO",name:"Women's 6\" TiTAN Waterproof",style:"TB153359",color:"Dark Brown",img:"img/products/tbl-53359-side.jpg?v=2",img2:"img/products/tbl-53359-angle.jpg?v=2",price:"$164.99",tags:["Alloy Toe","Waterproof","Women's"]}
+,{brand:"Timberland PRO",name:"Women's Hightower 6\" Waterproof",style:"TB1A1KIT214",color:"Grey/Brown",img:"img/products/tbl-A1KIT-side.jpg?v=2",img2:"img/products/tbl-A1KIT-angle.jpg?v=2",price:"$169.99",tags:["Alloy Toe","Waterproof","Women's"]}
+,{brand:"Keen",name:"Women's Reno Mid Waterproof",style:"1027104",color:"Magnet / Ipanema",img:"img/products/keen-1027104-side.jpg?v=2",img2:"img/products/keen-1027104-angle.jpg?v=2",price:"$174.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant","Women's"]}
+,{brand:"Keen",name:"Women's Evanston 6\" Waterproof",style:"1029152",color:"Bison / Black",img:"img/products/keen-1029152-side.jpg?v=2",img2:"img/products/keen-1029152-angle.jpg?v=2",price:"$159.99",tags:["Carbon Fiber Toe","Waterproof","EH","Slip Resistant","Women's"]}
+,{brand:"Keen",name:"Women's San Jose 6\" Waterproof",style:"1026369",color:"Almond / Gum",img:"img/products/keen-1026369-side.jpg?v=2",img2:"img/products/keen-1026369-angle.jpg?v=2",price:"$164.99",tags:["Aluminum Toe","Waterproof","EH","Slip Resistant","Wedge","Women's"]}
+,{brand:"Ariat",name:"Women's Rebar Wedge Chelsea Waterproof",style:"10061117",color:"Grey",img:"img/products/ariat-10061117-side.jpg?v=2",img2:"img/products/ariat-10061117-angle.jpg?v=2",price:"$179.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Pull-On","Wedge","Women's"]}
+,{brand:"Puma",name:"Women's Conquest 7\" Waterproof",style:"630565",color:"Wheat",img:"img/products/puma-630565-side.jpg?v=2",img2:"img/products/puma-630565-angle.jpg?v=2",price:"$179.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Side Zip","Women's"]}
+,{brand:"Puma",name:"Women's Iconic Suede Low",style:"640135",color:"Red / White",img:"img/products/puma-640135-side.jpg?v=2",img2:"img/products/puma-640135-angle.jpg?v=2",price:"$114.99",tags:["Composite Toe","EH","Slip Resistant","Women's"]}
+,{brand:"Carolina",name:"Women's 6\" Waterproof Comp Broad Toe Work Boot",style:"CA1620",color:"Copper Crazy Horse",img:"img/products/car-CA1620-side.jpg?v=2",img2:"img/products/car-CA1620-angle.jpg?v=2",price:"$189.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Women's"]}
+,{brand:"Avenger",name:"Women's Foreman Oxford",style:"A7164",color:"Brown",img:"img/products/aveng-A7164-side.jpg?v=2",price:"$119.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Metal-Free","Women's"]}
+,{brand:"Avenger",name:"Women's Framer Waterproof",style:"A7126",color:"Brown",img:"img/products/aveng-A7126-side.jpg?v=2",img2:"img/products/aveng-A7126-angle.jpg?v=2",price:"$129.99",tags:["Composite Toe","Waterproof","EH","Puncture Resistant","Women's"]}
+,{brand:"Avenger",name:"Women's Framer Lite Mid Waterproof",style:"A8160",color:"Brown",img:"img/products/aveng-A8160-side.jpg?v=2",img2:"img/products/aveng-A8160-angle.jpg?v=2",price:"$119.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Women's"]}
+,{brand:"Wolverine",name:"Women's Revival 6\" Composite-Toe Work Boot",style:"W241141",color:"Cashew",img:"img/products/wolv-W241141-side.jpg?v=2",img2:"img/products/wolv-W241141-angle.jpg?v=2",price:"$149.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Wedge","Women's"]}
+,{brand:"Wolverine",name:"Women's Revival Romeo Composite-Toe Work Boot",style:"W241148",color:"Cashew",img:"img/products/wolv-W241148-side.jpg?v=2",img2:"img/products/wolv-W241148-angle.jpg?v=2",price:"$139.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Pull-On","Wedge","Women's"]}
+];
+(function(){
+ const tabs=document.getElementById('stockTabs'),pg=document.getElementById('prodGrid');
+ const brands=[...new Set(PRODUCTS.map(p=>p.brand))];
+ const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ function render(b){
+  pg.innerHTML=PRODUCTS.filter(p=>b==='All'||p.brand===b).map(p=>`<article class="prod"><div class="pimg"><img src="${p.img}" alt="${esc(p.brand+' '+p.name)}" loading="lazy">${p.img2?`<img class="alt" src="${p.img2}" alt="" loading="lazy">`:''}</div><div class="pbody"><div class="pbrand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><p class="pmeta">${p.style?`Style ${esc(p.style)} · `:''}${esc(p.color)}</p>${p.price?`<p class="pprice">${esc(p.price)}</p>`:''}<div class="ptags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></article>`).join('');
+  tabs.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.b===b));
+ }
+ tabs.innerHTML=['All',...brands].map(b=>`<button class="chip" data-b="${esc(b)}">${esc(b)}</button>`).join('');
+ tabs.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)render(c.dataset.b)});
+ render('All');
+})();
+const BRANDS=[
+ ["Thorogood","Union-made work boots",["boot"]],
+ ["Wolverine","Rugged comfort work boots",["boot"]],
+ ["Carolina","Heavy-duty & lineman boots",["boot"]],
+ ["Chippewa","American-made work boots",["boot"]],
+ ["Rocky","Waterproof work & outdoor",["boot","weather"]],
+ ["Keen","Wide toe box comfort",["boot","athletic"]],
+ ["Timberland PRO","Anti-fatigue work boots",["boot","athletic"]],
+ ["Carhartt","Work boots & footwear",["boot","weather"]],
+ ["Brunt","Workwear built by tradespeople",["boot"]],
+ ["Iron Age","Industrial safety footwear",["boot"]],
+ ["Avenger","Safety boots & shoes",["boot","athletic"]],
+ ["Ariat","Western work boots",["western","boot"]],
+ ["Twisted X","Western & casual work",["western","athletic"]],
+ ["Puma Safety","Athletic safety shoes",["athletic"]],
+ ["Reebok Work","Athletic safety sneakers",["athletic"]],
+ ["Volcom Work","Skate-style safety shoes",["athletic"]],
+ ["DC Work","Skate-style safety shoes",["athletic"]],
+ ["Bogs","Waterproof rubber boots",["weather"]]
+];
+const grid=document.getElementById('brandGrid');
+grid.innerHTML=BRANDS.map(([n,d,t])=>`<div class="brand" data-t="${t.join(' ')}"><b>${n}</b><small>${d}</small></div>`).join('');
+document.querySelectorAll('.filters .chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.filters .chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+  const f=c.dataset.f;
+  grid.querySelectorAll('.brand').forEach(b=>b.classList.toggle('hide',f!=='all'&&!b.dataset.t.split(' ').includes(f)));
+}));
+const mb=document.querySelector('.menu-btn'),nl=document.getElementById('navlist');
+mb.addEventListener('click',()=>{const o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+document.getElementById('cb').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target,ok=document.getElementById('ok');
+  if(!f.name.value.trim()||!f.phone.value.trim()){ok.style.display='block';ok.textContent='Please add your name and phone number.';return;}
+  ok.style.display='block';
+  ok.innerHTML='Thanks, '+f.name.value.trim().replace(/[<>&]/g,'')+'! <b>Preview note:</b> this form isn\'t connected to the store yet. Call <b>(402) 339-1542</b> to reach us now.';
+});
+</script>
 </body>
 </html>
