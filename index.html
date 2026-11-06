@@ -90,6 +90,14 @@ section{padding:80px 0}
 .filters{display:flex;gap:8px;flex-wrap:wrap}
 .chip{border:2px solid var(--hv);color:var(--hv);background:transparent;padding:7px 14px;border-radius:30px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--hv);color:#fff}
+.brands-sec{padding-top:44px;padding-bottom:44px}
+.bstrip-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.bstrip-head h2{margin:4px 0 0}
+.bstrip-head .note{margin:0;max-width:440px}
+.bstrip{display:flex;flex-wrap:wrap;gap:8px}
+.bpill{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:30px;background:var(--paper);color:var(--ink);font-weight:800;font-size:15px;text-decoration:none;transition:border-color .15s,background .15s}
+.bpill small{font-weight:500;font-size:12px;color:var(--mute)}
+.bpill:hover{border-color:var(--hv);background:#fff}
 .brands{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .brand{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;transition:transform .15s,border-color .15s}
 .brand:hover{transform:translateY(-3px);border-color:var(--hv)}
@@ -241,6 +249,8 @@ footer a{color:#fff}
   .hero .wrap,.fit .wrap,.visit .wrap{grid-template-columns:1fr}
   .prot{grid-template-columns:repeat(2,1fr)}
   .brands{grid-template-columns:repeat(3,1fr)}
+  .brands-sec{padding-top:32px;padding-bottom:32px}
+  .bpill{min-height:38px;padding:0 12px;font-size:14px}
   .emp{grid-template-columns:1fr}
   nav ul{display:none;position:absolute;top:84px;left:0;right:0;background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.1);flex-direction:column;padding:10px 22px 18px;border-bottom:4px solid var(--hv)}
   nav ul.open{display:flex}
@@ -341,18 +351,11 @@ footer a{color:#fff}
 
   <section id="brands" class="brands-sec">
     <div class="wrap">
-      <div class="sec-head">
-        <div><span class="tag narrow">Brands we carry</span><h2>18 brands. One stop.</h2></div>
-        <div class="filters" role="group" aria-label="Filter brands">
-          <button class="chip" data-f="all" aria-pressed="true">All</button>
-          <button class="chip" data-f="boot" aria-pressed="false">Heavy-duty boots</button>
-          <button class="chip" data-f="athletic" aria-pressed="false">Athletic safety</button>
-          <button class="chip" data-f="western" aria-pressed="false">Western</button>
-          <button class="chip" data-f="weather" aria-pressed="false">Weather &amp; rubber</button>
-        </div>
+      <div class="bstrip-head">
+        <div><span class="tag narrow">Brands we carry</span><h2 id="brandsH">Top work brands. One stop.</h2></div>
+        <p class="note">Tap a brand to see what's on our shelves. Don't see your style? We can usually special order it.</p>
       </div>
-      <div class="brands" id="brandGrid"></div>
-      <p class="note" style="margin-top:18px">Don't see the exact style? Ask about special orders. If one of our brands makes it, we can usually get it.</p>
+      <div class="bstrip" id="brandGrid"></div>
     </div>
   </section>
 
@@ -726,13 +729,14 @@ const BRANDS=[
  ["DC Work","Skate-style safety shoes",["athletic"]],
  ["Bogs","Waterproof rubber boots",["weather"]]
 ];
-const grid=document.getElementById('brandGrid');
-grid.innerHTML=BRANDS.map(([n,d,t])=>`<div class="brand" data-t="${t.join(' ')}"><b>${n}</b><small>${d}</small></div>`).join('');
-document.querySelectorAll('.filters .chip').forEach(c=>c.addEventListener('click',()=>{
-  document.querySelectorAll('.filters .chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
-  const f=c.dataset.f;
-  grid.querySelectorAll('.brand').forEach(b=>b.classList.toggle('hide',f!=='all'&&!b.dataset.t.split(' ').includes(f)));
-}));
+(function(){
+ const grid=document.getElementById('brandGrid');
+ const sl=b=>b.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const cnt={};PRODUCTS.forEach(p=>cnt[p.brand]=(cnt[p.brand]||0)+1);
+ const names=Object.keys(cnt).sort((x,y)=>cnt[y]-cnt[x]);
+ document.getElementById('brandsH').textContent=names.length+' brands. One stop.';
+ grid.innerHTML=names.map(n=>`<a class="bpill" href="#in-stock/${sl(n)}">${n.replace(/[<>&]/g,'')} <small>${cnt[n]}</small></a>`).join('')+`<a class="bpill" href="#in-stock/all" style="border-color:var(--hv);color:var(--hv)">View all ${PRODUCTS.length} &rarr;</a>`;
+})();
 const mb=document.querySelector('.menu-btn'),nl=document.getElementById('navlist');
 mb.addEventListener('click',()=>{const o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
 nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
