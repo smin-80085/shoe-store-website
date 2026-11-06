@@ -8,7 +8,7 @@ It's a static site: one `index.html` page plus an `img/` folder. It needs no bui
 
 | Path | What it is |
 |---|---|
-| `index.html` | The whole site: layout, styles, and the In-Stock product list (the `PRODUCTS` array near the bottom) |
+| `index.html` | The whole site: layout, styles, the In-Stock catalog (brand picker + brand pages), and the product list (the `PRODUCTS` array near the bottom) |
 | `img/haney-logo.png` | Haney logo used in the header |
 | `img/store-floor.jpg`, `img/store-wall.jpg` | Store photos |
 | `img/products/` | Product photos: `-side.jpg` is the main view, `-angle.jpg` is the hover view |
@@ -51,5 +51,15 @@ Products are listed in the `PRODUCTS` array in `index.html`, one line per style:
 
 - To add a style, put an 800×800 photo in `img/products/` and add a line.
 - To remove a style, delete its line.
-- The brand filter buttons update automatically.
+- The brand cards on the catalog screen (with their style counts) and the "Switch brand" list update automatically. A new brand gets its own card.
 - If you replace a photo but keep the same file name, change `?v=2` to `?v=3` so browsers load the new picture instead of the old one.
+
+## Catalog links
+
+Each brand page has its own web address, so you can share or bookmark it directly:
+
+- `.../#in-stock`: the brand picker
+- `.../#in-stock/all`: every shoe
+- `.../#in-stock/keen`, `#in-stock/thorogood`, `#in-stock/timberland-pro`, and so on: one brand
+
+The address is the brand name in lowercase, with spaces turned into dashes.

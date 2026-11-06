@@ -142,21 +142,67 @@ footer{background:var(--ink);color:#b4b8be;padding:40px 0;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{color:#fff}
 
-.stock-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.prod{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-.prod .pimg{background:#1b1b1b;aspect-ratio:1/1;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-.prod .pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+/* ===== In-stock catalog: brand picker + brand pages ===== */
+#in-stock{scroll-margin-top:88px}
+.cat-view[hidden]{display:none}
+.cat-intro{margin:0 0 18px;color:var(--mute);font-size:15px}
+.bpick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.bcard{display:flex;align-items:center;gap:14px;text-align:left;width:100%;min-height:84px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:8px;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.bcard:hover,.bcard:focus-visible{border-color:var(--hv);box-shadow:0 6px 18px rgba(0,0,0,.08);transform:translateY(-1px);outline:none}
+.bcard .bthumb{flex:0 0 60px;width:60px;height:60px;border-radius:6px;background:#1b1b1b;overflow:hidden}
+.bcard .bthumb img{width:100%;height:100%;object-fit:contain;display:block}
+.bcard b{display:block;font-size:17px;font-weight:900;line-height:1.2}
+.bcard small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.bcard .go{margin-left:auto;color:var(--hv);font-weight:900;font-size:20px}
+.bcard.all{background:var(--hv);border-color:var(--hv);color:#fff;grid-column:1/-1;justify-content:center;min-height:64px}
+.bcard.all small{color:#ffe1df}
+.bcard.all .go{color:#fff;margin-left:14px}
+.bcard.all:hover{background:var(--hv-deep);border-color:var(--hv-deep)}
+.cat-bar{position:sticky;top:88px;z-index:10;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--paper);padding:12px 0;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 18px;border:2px solid var(--hv);border-radius:30px;background:var(--hv);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer;white-space:nowrap}
+.back-btn:hover{background:var(--hv-deep);border-color:var(--hv-deep)}
+.back-btn.ghost{background:transparent;color:var(--hv)}
+.back-btn.ghost:hover{background:#f6eaea}
+.cat-title{margin:0;font-size:22px;line-height:1.2;flex:1 1 auto;min-width:0}
+.cat-title small{display:block;font-size:13px;font-weight:500;color:var(--mute)}
+.cat-switch{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;white-space:nowrap}
+.cat-switch select{min-height:44px;padding:0 34px 0 12px;border:1px solid var(--line);border-radius:6px;background:#fff;font:inherit;font-size:15px;color:var(--ink);max-width:100%}
+.cat-foot{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.prod .pimg{background:#1b1b1b;height:180px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.prod .pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .3s}
 .prod .pimg img.alt{opacity:0}
 .prod:hover .pimg img.alt{opacity:1}
-.pprice{font-weight:900;font-size:18px;margin:0 0 8px}
-.prod .pbody{padding:14px 16px 16px}
-.prod .pbrand{font-size:12px;font-weight:700;color:var(--hv);text-transform:uppercase;letter-spacing:.06em}
-.prod h3{margin:3px 0 4px;font-size:17px;line-height:1.25}
-.prod .pmeta{font-size:13px;color:var(--mute);margin:0 0 10px}
-.ptags{display:flex;flex-wrap:wrap;gap:5px}
-.ptags span{font-size:11px;font-weight:700;background:#f1efea;color:var(--steel);padding:3px 7px;border-radius:3px}
-@media (max-width:960px){.products{grid-template-columns:repeat(2,1fr)}}
+.pprice{font-weight:900;font-size:16px;margin:0 0 8px}
+.prod .pbody{padding:10px 12px 12px;display:flex;flex-direction:column;flex:1}
+.prod .pbrand{font-size:11px;font-weight:700;color:var(--hv);text-transform:uppercase;letter-spacing:.06em}
+.prod h3{margin:2px 0 3px;font-size:15px;line-height:1.25;overflow-wrap:anywhere}
+.prod .pmeta{font-size:12px;color:var(--mute);margin:0 0 6px;overflow-wrap:anywhere}
+.ptags{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
+.ptags span{font-size:10.5px;font-weight:700;background:#f1efea;color:var(--steel);padding:2px 6px;border-radius:3px}
+@media (max-width:1099px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.bpick{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){
+  .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .bpick{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .prod .pimg{height:150px}
+  .cat-bar{gap:10px}
+  .cat-title{flex-basis:100%;order:-1;font-size:20px}
+  .cat-switch{flex:1 1 160px}
+  .cat-switch select{flex:1;width:100%}
+  .cat-switch span{display:none}
+}
+@media (max-width:480px){
+  .bcard{min-height:72px;padding:10px;gap:10px}
+  .bcard .bthumb{flex-basis:46px;width:46px;height:46px}
+  .bcard b{font-size:15px}
+  .bcard .go{display:none}
+  .bcard.all .go{display:inline}
+  .prod .pimg{height:130px}
+  .prod .pbody{padding:8px 10px 10px}
+  .prod h3{font-size:14px}
+}
+@media (max-width:359px){.products,.bpick{grid-template-columns:1fr}.prod .pimg{height:170px}}
 @media (max-width:960px){
   .hero .wrap,.fit .wrap,.visit .wrap{grid-template-columns:1fr}
   .prot{grid-template-columns:repeat(2,1fr)}
@@ -282,8 +328,24 @@ footer a{color:#fff}
         <div><span class="tag narrow">On our shelves</span><h2>In stock at 108th St.</h2></div>
         <p>These are the styles we keep on hand. Call ahead to check your size, or ask us to special order anything else.</p>
       </div>
-      <div class="stock-tabs" id="stockTabs" role="group" aria-label="Filter by brand"></div>
-      <div class="products" id="prodGrid"></div>
+      <div class="cat-view" id="catBrands">
+        <p class="cat-intro">Choose a brand to see the styles we carry, or view every shoe at once.</p>
+        <div class="bpick" id="brandPick"></div>
+      </div>
+      <div class="cat-view" id="catList" hidden>
+        <div class="cat-bar">
+          <button type="button" class="back-btn" data-back>&larr; Back to Brands</button>
+          <h3 class="cat-title" id="catTitle" tabindex="-1"></h3>
+          <label class="cat-switch"><span>Switch brand</span>
+            <select id="catSwitch" aria-label="Switch brand"></select>
+          </label>
+        </div>
+        <div class="products" id="prodGrid"></div>
+        <div class="cat-foot">
+          <button type="button" class="back-btn" data-back>&larr; Back to Brands</button>
+          <button type="button" class="back-btn ghost" data-all>View All Shoes</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -477,16 +539,38 @@ const PRODUCTS=[
 ,{brand:"Wolverine",name:"Women's Revival Romeo Composite-Toe Work Boot",style:"W241148",color:"Cashew",img:"img/products/wolv-W241148-side.jpg?v=2",img2:"img/products/wolv-W241148-angle.jpg?v=2",price:"$139.99",tags:["Composite Toe","Waterproof","EH","Slip Resistant","Pull-On","Wedge","Women's"]}
 ];
 (function(){
- const tabs=document.getElementById('stockTabs'),pg=document.getElementById('prodGrid');
+ const sec=document.getElementById('in-stock'),vB=document.getElementById('catBrands'),vL=document.getElementById('catList');
+ const pick=document.getElementById('brandPick'),pg=document.getElementById('prodGrid'),title=document.getElementById('catTitle'),sw=document.getElementById('catSwitch');
  const brands=[...new Set(PRODUCTS.map(p=>p.brand))];
  const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- function render(b){
-  pg.innerHTML=PRODUCTS.filter(p=>b==='All'||p.brand===b).map(p=>`<article class="prod"><div class="pimg"><img src="${p.img}" alt="${esc(p.brand+' '+p.name)}" loading="lazy">${p.img2?`<img class="alt" src="${p.img2}" alt="" loading="lazy">`:''}</div><div class="pbody"><div class="pbrand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><p class="pmeta">${p.style?`Style ${esc(p.style)} · `:''}${esc(p.color)}</p>${p.price?`<p class="pprice">${esc(p.price)}</p>`:''}<div class="ptags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></article>`).join('');
-  tabs.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.b===b));
+ const slug=b=>b.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const bySlug=Object.fromEntries(brands.map(b=>[slug(b),b]));
+ const count=b=>PRODUCTS.filter(p=>p.brand===b).length;
+ const n=k=>k+(k===1?' style':' styles');
+ // brand selection screen
+ pick.innerHTML=`<button type="button" class="bcard all" data-go="all"><span><b>View All Shoes</b><small>${n(PRODUCTS.length)} from ${brands.length} brands</small></span><span class="go">&rarr;</span></button>`+
+  brands.map(b=>{const f=PRODUCTS.find(p=>p.brand===b);return `<button type="button" class="bcard" data-go="${slug(b)}"><span class="bthumb"><img src="${f.img}" alt="" loading="lazy"></span><span><b>${esc(b)}</b><small>${n(count(b))}</small></span><span class="go">&rsaquo;</span></button>`}).join('');
+ sw.innerHTML=`<option value="all">All Shoes (${PRODUCTS.length})</option>`+brands.map(b=>`<option value="${slug(b)}">${esc(b)} (${count(b)})</option>`).join('');
+ const card=p=>`<article class="prod"><div class="pimg"><img src="${p.img}" alt="${esc(p.brand+' '+p.name)}" loading="lazy">${p.img2?`<img class="alt" src="${p.img2}" alt="" loading="lazy">`:''}</div><div class="pbody"><div class="pbrand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><p class="pmeta">${p.style?`Style ${esc(p.style)} · `:''}${esc(p.color)}</p>${p.price?`<p class="pprice">${esc(p.price)}</p>`:''}<div class="ptags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></article>`;
+ function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  if(!h.startsWith('in-stock/')){vL.hidden=true;vB.hidden=false;return false;}
+  const key=h.slice(9),b=key==='all'?'all':bySlug[key];
+  if(!b){vL.hidden=true;vB.hidden=false;return true;}
+  const list=b==='all'?PRODUCTS:PRODUCTS.filter(p=>p.brand===b);
+  title.innerHTML=`${b==='all'?'All Shoes':esc(b)}<small>${n(list.length)} in stock</small>`;
+  pg.innerHTML=list.map(card).join('');
+  sw.value=b==='all'?'all':key;
+  vL.querySelectorAll('[data-all]').forEach(x=>x.hidden=b==='all');
+  vB.hidden=true;vL.hidden=false;return true;
  }
- tabs.innerHTML=['All',...brands].map(b=>`<button class="chip" data-b="${esc(b)}">${esc(b)}</button>`).join('');
- tabs.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)render(c.dataset.b)});
- render('All');
+ function top(){const y=sec.getBoundingClientRect().top+window.scrollY-88;window.scrollTo({top:y,behavior:'instant'})}
+ const go=k=>{location.hash=k?'in-stock/'+k:'in-stock'};
+ pick.addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(c)go(c.dataset.go)});
+ vL.addEventListener('click',e=>{if(e.target.closest('[data-back]'))go('');else if(e.target.closest('[data-all]'))go('all')});
+ sw.addEventListener('change',()=>go(sw.value));
+ window.addEventListener('hashchange',()=>{if(route()||location.hash==='#in-stock')top()});
+ if(route())requestAnimationFrame(top);
 })();
 const BRANDS=[
  ["Thorogood","Union-made work boots",["boot"]],
