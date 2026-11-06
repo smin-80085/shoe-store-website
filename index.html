@@ -167,20 +167,40 @@ footer a{color:#fff}
 .cat-title small{display:block;font-size:13px;font-weight:500;color:var(--mute)}
 .cat-switch{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;white-space:nowrap}
 .cat-switch select{min-height:44px;padding:0 34px 0 12px;border:1px solid var(--line);border-radius:6px;background:#fff;font:inherit;font-size:15px;color:var(--ink);max-width:100%}
-.cat-filters{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.cat-filters .flabel{font-size:13px;font-weight:700;color:var(--mute);margin-right:2px}
-.fchip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:2px solid var(--line);border-radius:30px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
+.fbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.fbar .fsearch{flex:1 1 220px;width:auto;max-width:none;margin:0;min-width:0;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:6px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+.fbar .fsort{flex:0 0 auto;width:auto;max-width:none;margin:0;min-height:44px;padding:0 30px 0 12px;border:1px solid var(--line);border-radius:6px;background:#fff;font:inherit;font-size:15px;color:var(--ink)}
+.ftoggle{display:none;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:2px solid var(--ink);border-radius:30px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.ftoggle b{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--hv);color:#fff;font-size:12px}
+.fpanel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 16px;display:grid;gap:10px}
+.fgroup{display:grid;grid-template-columns:110px 1fr;align-items:start;gap:8px}
+.fgroup>span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);padding-top:10px}
+.fgroup>div{display:flex;flex-wrap:wrap;gap:6px}
+.fchip{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 13px;border:2px solid var(--line);border-radius:30px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
 .fchip small{font-weight:500;color:var(--mute)}
 .fchip:hover{border-color:var(--hv)}
 .fchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .fchip[aria-pressed="true"] small{color:#ddd}
 .fchip:disabled{opacity:.4;cursor:default;border-color:var(--line)}
-.fclear{background:none;border:0;color:var(--hv);font:inherit;font-weight:700;font-size:14px;cursor:pointer;min-height:40px;padding:0 6px;text-decoration:underline}
+.factive{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 14px}
+.factive:empty{display:none}
+.factive button.pill{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border:0;border-radius:30px;background:var(--ink);color:#fff;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.fclear{background:none;border:0;color:var(--hv);font:inherit;font-weight:700;font-size:14px;cursor:pointer;min-height:34px;padding:0 6px;text-decoration:underline}
 .cat-empty{grid-column:1/-1;text-align:center;padding:40px 16px;color:var(--mute)}
+.fpick-h{grid-column:1/-1;margin:6px 0 -2px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
 .fpick{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .bcard.feat{justify-content:center;min-height:56px;border-width:2px;border-color:var(--ink)}
 .bcard.feat .go{margin-left:10px}
-@media (max-width:760px){.fpick{gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}.bcard.feat{padding:8px 6px;min-height:56px;text-align:center}.bcard.feat b{font-size:14px}.bcard.feat small{font-size:12px}.fchip{min-height:40px;padding:0 12px;font-size:13px}}
+@media (max-width:760px){
+ .fpick{gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .bcard.feat{padding:8px 6px;min-height:56px;text-align:center}.bcard.feat b{font-size:14px}.bcard.feat small{font-size:12px}
+ .ftoggle{display:inline-flex}
+ .fpanel[data-closed]{display:none}
+ .fgroup{grid-template-columns:1fr;gap:4px}.fgroup>span{padding-top:0}
+ .fchip{min-height:40px;padding:0 12px;font-size:13px}
+ .fbar .fsearch{flex-basis:100%;order:3}
+ .fbar .fsort{flex:1 1 auto}
+}
 .cat-foot{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
 .products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .prod{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
@@ -353,8 +373,14 @@ footer a{color:#fff}
           <label class="cat-switch"><span>Switch brand</span>
             <select id="catSwitch" aria-label="Switch brand"></select>
           </label>
-          <div class="cat-filters" id="catFilters" role="group" aria-label="Filter shoes"></div>
         </div>
+        <div class="fbar">
+          <button type="button" class="ftoggle" id="fToggle" aria-controls="fPanel" aria-expanded="false">Filters</button>
+          <input type="search" class="fsearch" id="fSearch" placeholder="Search name or style # (e.g. 804-4375)" aria-label="Search shoes">
+          <select class="fsort" id="fSort" aria-label="Sort"><option value="">Sort: Featured</option><option value="lo">Price: Low to High</option><option value="hi">Price: High to Low</option></select>
+        </div>
+        <div class="fpanel" id="fPanel" role="group" aria-label="Filter shoes"></div>
+        <div class="factive" id="fActive"></div>
         <div class="products" id="prodGrid"></div>
         <div class="cat-foot">
           <button type="button" class="back-btn" data-back>&larr; Back to Brands</button>
@@ -606,50 +632,77 @@ const PRODUCTS=[
   brands.map(b=>{const f=PRODUCTS.find(p=>p.brand===b);return `<button type="button" class="bcard" data-go="${slug(b)}"><span class="bthumb"><img src="${f.img}" alt="" loading="lazy"></span><span><b>${esc(b)}</b><small>${n(count(b))}</small></span><span class="go">&rsaquo;</span></button>`}).join('');
  sw.innerHTML=`<option value="all">All Shoes (${PRODUCTS.length})</option>`+brands.map(b=>`<option value="${slug(b)}">${esc(b)} (${count(b)})</option>`).join('');
  const card=p=>`<article class="prod"><div class="pimg"><img src="${p.img}" alt="${esc(p.brand+' '+p.name)}" loading="lazy">${p.img2?`<img class="alt" src="${p.img2}" alt="" loading="lazy">`:''}</div><div class="pbody"><div class="pbrand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><p class="pmeta">${p.style?`Style ${esc(p.style)} · `:''}${esc(p.color)}</p>${p.price?`<p class="pprice">${esc(p.price)}</p>`:''}<div class="ptags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></article>`;
- // feature filters (combine with AND)
+ // ---- product shape: athletic / work shoe / boot height (by style #) ----
+ const SHAPE={ath:'1024604 1030756 1029698 1025564 1026704 1029118 1025571 1024594 1029699 1032245 DC60103 DC60205 VM30809 VM30809F RB9403 RB4047 RB3481 RB3315 RB3402 RB4311 RB304 RB133 RB045 RB492 RB365 RB366 RB315 RB382 RB3400 TB1A2174001 TB1A1B7F001 TB1A1H1S001 TB1A1GT9 TB1A176A TB1A2123 640135',
+  shoe:'1023205 A7164 A7118',
+  b8:'1024222 814-4178 804-4244 804-4478 804-4288 804-4364 BRF10006 IA5081 RKK0519 CA7522 RKK0277 59405 BRF20002 BRF20003',
+  tall:'814-4208 804-4205 804-4342 W251016 IA5040 IA5041 TB1A437Y MLCA001 MXBAW02 MXBAW05 MXBNWM1 10017420 10024992 10060893 10016265 10020063 72515NT'};
+ const shapeOf={};Object.entries(SHAPE).forEach(([k,v])=>v.split(' ').forEach(st=>shapeOf[st]=k));
+ const shape=p=>shapeOf[p.style]||'b6'; // anything not listed is a 6"/mid boot
+ const has=(p,...t)=>t.some(x=>p.tags.includes(x));
  const isW=p=>p.tags.includes("Women's")||/^Women's/.test(p.name);
- const FILTERS=[
-  {k:'mens',label:"Men's",test:p=>!isW(p),x:'womens'},
-  {k:'womens',label:"Women's",test:isW,x:'mens'},
-  {k:'met',label:'Met Guard',test:p=>p.tags.includes('Met Guard')},
-  {k:'esd',label:'ESD',test:p=>p.tags.includes('ESD')}
+ // groups: OR inside a group, AND between groups
+ const GROUPS=[
+  {g:'For',items:[{k:'mens',label:"Men's",test:p=>!isW(p)},{k:'womens',label:"Women's",test:isW}]},
+  {g:'Style',items:[{k:'ath',label:'Athletic & Sneakers',test:p=>shape(p)==='ath'},{k:'shoe',label:'Work Shoes',test:p=>shape(p)==='shoe'},{k:'b6',label:'6" Boots',test:p=>shape(p)==='b6'},{k:'b8',label:'8" Boots',test:p=>shape(p)==='b8'},{k:'tall',label:'Tall & Western (10"+)',test:p=>shape(p)==='tall'}]},
+  {g:'On / Off',items:[{k:'lace',label:'Lace-Up',test:p=>!has(p,'Pull-On','Slip-On','BOA Laces')},{k:'pull',label:'Pull-On',test:p=>has(p,'Pull-On')},{k:'slip',label:'Slip-On',test:p=>has(p,'Slip-On')},{k:'boa',label:'BOA',test:p=>has(p,'BOA Laces')}]},
+  {g:'Toe',items:[{k:'steel',label:'Steel',test:p=>has(p,'Steel Toe')},{k:'comp',label:'Composite / Carbon',test:p=>has(p,'Composite Toe','Nano Composite Toe','Carbon Fiber Toe')},{k:'alloy',label:'Alloy / Aluminum',test:p=>has(p,'Alloy Toe','Aluminum Toe')},{k:'soft',label:'Soft Toe',test:p=>has(p,'Soft Toe')}]},
+  {g:'Features',items:[{k:'wp',label:'Waterproof',test:p=>has(p,'Waterproof')},{k:'ins',label:'Insulated',test:p=>p.tags.some(t=>/^Insulated/.test(t))},{k:'met',label:'Met Guard',test:p=>has(p,'Met Guard')},{k:'esd',label:'ESD',test:p=>has(p,'ESD')},{k:'eh',label:'EH Rated',test:p=>has(p,'EH')},{k:'mf',label:'Metal-Free',test:p=>has(p,'Metal-Free')},{k:'pr',label:'Puncture Resistant',test:p=>has(p,'Puncture Resistant')},{k:'usa',label:'Made in USA',test:p=>has(p,'Made in USA')}]}
  ];
- const FK=Object.fromEntries(FILTERS.map(f=>[f.k,f]));
- const fbox=document.getElementById('catFilters');
- let cur={key:'all',f:[]};
- const applyF=(list,fs)=>list.filter(p=>fs.every(k=>FK[k].test(p)));
- const hashFor=(key,fs)=>key+(fs.length?'?f='+fs.join(','):'');
+ const FK={};GROUPS.forEach((G,i)=>G.items.forEach(f=>{f.gi=i;FK[f.k]=f}));
+ const fpanel=document.getElementById('fPanel'),factive=document.getElementById('fActive'),ftog=document.getElementById('fToggle'),fsearch=document.getElementById('fSearch'),fsort=document.getElementById('fSort');
+ let cur={key:'all',f:[],q:'',s:''};
+ const norm=t=>String(t).toLowerCase().replace(/[^a-z0-9]+/g,'');
+ const matchQ=(p,q)=>{if(!q)return true;const hay=norm(p.brand+' '+p.name+' '+p.style+' '+p.color+' '+p.tags.join(' '));return q.toLowerCase().split(/\s+/).filter(Boolean).every(w=>hay.includes(norm(w)))};
+ // fs = active keys; skipGroup lets chip counts ignore their own group
+ const applyF=(list,fs,q,skipGroup)=>list.filter(p=>{
+  for(let i=0;i<GROUPS.length;i++){if(i===skipGroup)continue;const on=fs.filter(k=>FK[k].gi===i);if(on.length&&!on.some(k=>FK[k].test(p)))return false;}
+  return matchQ(p,q);});
+ const price=p=>parseFloat(String(p.price).replace(/[^0-9.]/g,''))||0;
+ const hashFor=(key,fs,q,so)=>{const u=new URLSearchParams();if(fs.length)u.set('f',fs.join(','));if(q)u.set('q',q);if(so)u.set('s',so);const t=u.toString().replace(/%2C/g,',');return key+(t?'?'+t:'')};
  // shortcut cards on the brand screen
- const allCard=pick.querySelector('.bcard.all');
- allCard.insertAdjacentHTML('afterend',`<div class="fpick">${FILTERS.map(f=>`<button type="button" class="bcard feat" data-go="all?f=${f.k}"><span><b>${esc(f.label)}</b><small>${n(PRODUCTS.filter(f.test).length)}</small></span><span class="go">&rsaquo;</span></button>`).join('')}</div>`);
+ const SHORT=['mens','womens','ath','b6','b8','tall','met','esd'];
+ pick.querySelector('.bcard.all').insertAdjacentHTML('afterend',`<p class="fpick-h">Shop by type</p><div class="fpick">${SHORT.map(k=>{const f=FK[k];return `<button type="button" class="bcard feat" data-go="all?f=${k}"><span><b>${esc(f.label)}</b><small>${n(PRODUCTS.filter(f.test).length)}</small></span><span class="go">&rsaquo;</span></button>`}).join('')}</div><p class="fpick-h">Or pick a brand</p>`);
+ let panelOpen=false;
  function route(){
   const h=decodeURIComponent(location.hash.slice(1));
   if(!h.startsWith('in-stock/')){vL.hidden=true;vB.hidden=false;return false;}
-  const [key,q]=h.slice(9).split('?'),b=key==='all'?'all':bySlug[key];
+  const qi=h.indexOf('?'),key=qi<0?h.slice(9):h.slice(9,qi),b=key==='all'?'all':bySlug[key];
   if(!b){vL.hidden=true;vB.hidden=false;return true;}
-  const fs=((new URLSearchParams(q||'')).get('f')||'').split(',').filter(k=>FK[k]);
-  cur={key,f:fs};
+  const P=new URLSearchParams(qi<0?'':h.slice(qi+1));
+  const fs=(P.get('f')||'').split(',').filter(k=>FK[k]);const q=P.get('q')||'';const so=P.get('s')||'';
+  cur={key,f:fs,q,s:so};
   const base=b==='all'?PRODUCTS:PRODUCTS.filter(p=>p.brand===b);
-  const list=applyF(base,fs);
+  let list=applyF(base,fs,q);
+  if(so==='lo')list=[...list].sort((x,y)=>price(x)-price(y));else if(so==='hi')list=[...list].sort((x,y)=>price(y)-price(x));
   const fl=fs.map(k=>FK[k].label).join(' + ');
-  title.innerHTML=`${b==='all'?(fl?fl+' Shoes':'All Shoes'):esc(b)+(fl?' · '+esc(fl):'')}<small>${n(list.length)} in stock</small>`;
-  fbox.innerHTML='<span class="flabel">Filter:</span>'+FILTERS.map(f=>{const on=fs.includes(f.k);const c=applyF(base,on?fs:[...fs.filter(x=>x!==f.x),f.k]).length;return `<button type="button" class="fchip" data-f="${f.k}" aria-pressed="${on}"${!on&&!c?' disabled':''}>${esc(f.label)} <small>${c}</small></button>`}).join('')+(fs.length?'<button type="button" class="fclear" data-fclear>Clear filters</button>':'');
-  pg.innerHTML=list.length?list.map(card).join(''):'<p class="cat-empty">No styles match these filters. Try removing one, or call us at 402-339-1542.</p>';
+  title.innerHTML=`${b==='all'?(!fs.length&&!q?'All Shoes':fl&&fs.length<3?esc(fl):'Filtered Results'):esc(b)+(fl&&fs.length<3?' · '+esc(fl):fs.length||q?' · Filtered':'')}<small>${n(list.length)} in stock</small>`;
+  fpanel.innerHTML=GROUPS.map((G,i)=>{const pool=applyF(base,fs,q,i);const chips=G.items.map(f=>{const on=fs.includes(f.k);const c=pool.filter(f.test).length;if(!c&&!on)return '';return `<button type="button" class="fchip" data-f="${f.k}" aria-pressed="${on}">${esc(f.label)} <small>${c}</small></button>`}).join('');return chips?`<div class="fgroup"><span>${G.g}</span><div>${chips}</div></div>`:''}).join('');
+  factive.innerHTML=fs.length||q?fs.map(k=>`<button type="button" class="pill" data-f="${k}" aria-label="Remove ${esc(FK[k].label)}">${esc(FK[k].label)} &times;</button>`).join('')+(q?`<button type="button" class="pill" data-qclear aria-label="Clear search">“${esc(q)}” &times;</button>`:'')+'<button type="button" class="fclear" data-fclear>Clear all</button>':'';
+  ftog.innerHTML='Filters'+(fs.length?` <b>${fs.length}</b>`:'');ftog.setAttribute('aria-expanded',panelOpen);
+  if(panelOpen)fpanel.removeAttribute('data-closed');else fpanel.setAttribute('data-closed','');
+  if(document.activeElement!==fsearch)fsearch.value=q;
+  fsort.value=so;
+  pg.innerHTML=list.length?list.map(card).join(''):'<p class="cat-empty">No styles match. Try removing a filter, or call us at 402-339-1542 — we can special order.</p>';
   sw.value=b==='all'?'all':key;
-  vL.querySelectorAll('[data-all]').forEach(x=>x.hidden=b==='all'&&!fs.length);
+  vL.querySelectorAll('[data-all]').forEach(x=>x.hidden=b==='all'&&!fs.length&&!q);
   vB.hidden=true;vL.hidden=false;return true;
  }
+ const setState=(fs,q,so)=>{history.replaceState(null,'','#in-stock/'+hashFor(cur.key,fs,q,so));route()};
  function top(){const y=sec.getBoundingClientRect().top+window.scrollY-88;window.scrollTo({top:y,behavior:'instant'})}
  const go=k=>{location.hash=k?'in-stock/'+k:'in-stock'};
  pick.addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(c)go(c.dataset.go)});
  vL.addEventListener('click',e=>{
   const fc=e.target.closest('[data-f]');
-  if(fc){const k=fc.dataset.f,fs=cur.f.includes(k)?cur.f.filter(x=>x!==k):[...cur.f.filter(x=>x!==FK[k].x),k];keepPos=true;history.replaceState(null,'','#in-stock/'+hashFor(cur.key,fs));route();return;}
-  if(e.target.closest('[data-fclear]')){keepPos=true;history.replaceState(null,'','#in-stock/'+cur.key);route();return;}
+  if(fc){const k=fc.dataset.f,fs=cur.f.includes(k)?cur.f.filter(x=>x!==k):[...cur.f,k];setState(fs,cur.q,cur.s);return;}
+  if(e.target.closest('[data-qclear]')){fsearch.value='';setState(cur.f,'',cur.s);return;}
+  if(e.target.closest('[data-fclear]')){fsearch.value='';setState([],'',cur.s);return;}
+  if(e.target.closest('#fToggle')){panelOpen=!panelOpen;route();return;}
   if(e.target.closest('[data-back]'))go('');else if(e.target.closest('[data-all]'))go('all');
  });
- let keepPos=false;
- sw.addEventListener('change',()=>go(hashFor(sw.value,cur.f)));
+ let qt;fsearch.addEventListener('input',()=>{clearTimeout(qt);qt=setTimeout(()=>setState(cur.f,fsearch.value.trim(),cur.s),200)});
+ fsort.addEventListener('change',()=>setState(cur.f,cur.q,fsort.value));
+ sw.addEventListener('change',()=>go(hashFor(sw.value,cur.f,cur.q,cur.s)));
  window.addEventListener('hashchange',()=>{if(route()||location.hash==='#in-stock')top()});
  if(route())requestAnimationFrame(top);
 })();
