@@ -45,12 +45,15 @@ nav a:hover{background:#f6eaea;color:var(--hv)}
 /* hero */
 .hero{background:linear-gradient(90deg,rgba(22,24,27,.96) 0%,rgba(22,24,27,.86) 50%,rgba(22,24,27,.7) 100%),url(img/store-floor.jpg) center/cover;color:#fff;position:relative;overflow:hidden}
 .hero-card{backdrop-filter:blur(4px);background:rgba(35,38,43,.88)!important}
-.gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gallery a{display:block;height:100%}
+.gallery img{aspect-ratio:16/10!important}
+@media (max-width:760px){.gallery img{aspect-ratio:4/3!important}}
 .gallery figure{margin:0;position:relative;border-radius:10px;overflow:hidden;background:var(--ink)}
 .gallery img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
 .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 16px;color:#fff;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.8))}
 .gallery figcaption b{display:block;color:var(--hv-lt);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-@media (max-width:760px){.gallery{grid-template-columns:1fr}}
+@media (max-width:760px){.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 -20px;padding:0 20px 6px;scrollbar-width:none}.gallery::-webkit-scrollbar{display:none}.gallery figure{flex:0 0 86%;scroll-snap-align:center}.gallery figcaption{padding:32px 14px 12px;font-size:14px}}
 .hero::before{content:"";position:absolute;inset:auto 0 0 0;height:18px;background:repeating-linear-gradient(-45deg,var(--hv) 0 22px,#fff 22px 44px)}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;padding-top:70px;padding-bottom:96px;align-items:center}
 .eyebrow{display:inline-block;color:var(--hv-lt);font-weight:700;font-size:14px;margin-bottom:14px}
@@ -343,8 +346,10 @@ footer a{color:#fff}
         <p>Every brand has its own wall, so it's easy to compare styles side by side. Grab a seat and we'll bring out your size.</p>
       </div>
       <div class="gallery">
-        <figure><img src="img/store-floor.jpg" alt="Inside Haney Shoe Stores on S 108th St: Keen Utility wall, fitting chairs and boot displays" loading="lazy"><figcaption><b>The fitting floor</b>Keen Utility, western work boots and comfortable seating to try on</figcaption></figure>
-        <figure><img src="img/store-wall.jpg" alt="Timberland PRO and Reebok Work safety shoe displays" loading="lazy"><figcaption><b>Timberland PRO &amp; Reebok Work</b>Men's and women's safety boots and athletic safety shoes</figcaption></figure>
+        <figure><a href="img/store-fitting.jpg" target="_blank" rel="noopener"><img src="img/store-fitting.jpg" alt="Fitting area at Haney Shoe Stores on S 108th St: leather chairs, Keen Utility American Built, Brunt and Wolverine walls" loading="lazy"></a><figcaption><b>The fitting area</b>Have a seat. We'll measure your feet and bring out your size.</figcaption></figure>
+        <figure><a href="img/store-western.jpg" target="_blank" rel="noopener"><img src="img/store-western.jpg" alt="Western work boots, met guard boots and loggers on display, with belts and boot care" loading="lazy"></a><figcaption><b>Western, met guard &amp; loggers</b>Ariat, Twisted X, Justin and more, plus belts and boot care.</figcaption></figure>
+        <figure><a href="img/store-timberland.jpg" target="_blank" rel="noopener"><img src="img/store-timberland.jpg" alt="Timberland PRO and Reebok Work safety boot and shoe walls" loading="lazy"></a><figcaption><b>Timberland PRO &amp; Reebok Work</b>Men's and women's safety boots and athletic safety shoes.</figcaption></figure>
+        <figure><a href="img/store-keen.jpg" target="_blank" rel="noopener"><img src="img/store-keen.jpg" alt="Keen Utility wall including the American Built collection" loading="lazy"></a><figcaption><b>Keen Utility</b>Including the American Built collection, assembled in Portland, Oregon.</figcaption></figure>
       </div>
     </div>
   </section>
